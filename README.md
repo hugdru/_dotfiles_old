@@ -41,6 +41,9 @@ https://www.unbound.net/
 #### colors ####
 I use solarized everywhere. Consistency :)
 
+#### terminal and shell ####
+urxvt, zsh with zplug.
+
 #### editor ####
 https://github.com/neovim/neovim <br>
 I use neovim, dotfiles/.vimrc is outdated and I no longer use "normal" vim. vim and vimdiff are aliased to nvim and nvim -d.
