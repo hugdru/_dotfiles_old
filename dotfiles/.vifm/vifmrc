@@ -1,0 +1,26 @@
+" Run stuff from https://github.com/rvega/.myconfig/blob/master/vifm/vifmrc
+
+" Toggle whether to use the terminal multiplexer or not.
+:screen
+
+set trash
+
+" With this option turned on you can run  partially entered  com-
+" mands  with unambiguous beginning using :! (e.g. :!Te instead of
+set fastrun
+
+set followlinks
+set norunexec
+set noiec
+
+set hlsearch
+set incsearch
+colorscheme dircolors-solarizedConversion.vifm
+set sortnumbers
+
+set wildmenu
+set ignorecase
+set smartcase
+set history=100
+
+filetype * xdg-open

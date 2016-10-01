@@ -1,0 +1,79 @@
+set nocompatible
+"set noloadplugins
+
+set nobackup
+set noswapfile
+set nowritebackup
+set readonly
+
+set path=/run/current-system/sw/bin/man/**
+set rtp+=~/.vim/bundle/molokai
+
+set fileformats=unix,dos,mac " Detects unix, dos, mac file formats in that order. And first is used for new buffers.
+
+" Unicode support (taken from http://vim.wikia.com/wiki/Working_with_Unicode)
+if has("multi_byte")
+    if &termencoding == ""
+        let &termencoding = &encoding
+    endif
+    set encoding=utf-8
+    setglobal fileencoding=utf-8
+    set fileencodings=ucs-bom,utf-8,latin1
+endif
+
+set t_Co=256
+syntax on
+
+"let vimpager_disable_x11 = 1
+let vimpager_scrolloff = 0
+
+let vimpager_disable_ansiesc = 0
+
+color molokai
+
+set mouse=a " enable mouse in all modes
+set autoread " auto read when a file is changed from the outside
+set showmatch " Show matching brackets when text indicator is over them
+set showmode "show the current mode
+set showcmd " display incomplete commands
+set mat=2 " How many tenths of a second to blink when matching brackets
+set modelines=0 " don't use modelines (for security)
+set incsearch " find as entering pattern
+set hlsearch " highlight search results
+set ignorecase " case insensitive patterns,...
+set smartcase " when only lowercase is case doesnt matter
+set magic "For regular expressions turn magic on
+set cmdheight=1 " Height of the command bar
+set wildmode=list:longest "make cmdline tab completion similar to bash
+set bs=indent,eol,start " allow backspacing over everything
+
+let mapleader = ","
+
+" ZZ for saving an closing
+" Quit working buffer if file is unmodified
+nnoremap <leader>q :bd<CR>
+" Save all buffers and quit
+nnoremap <leader>Q :xa<CR>
+" Quit current window if file is unmodified. And quit vim if there is just one.
+nnoremap <leader>x :q<CR>
+" Quit all buffers without saving, there is no prompt!
+nnoremap <leader>X :qa!<CR>
+
+" Paste and copy
+" Copying Shorcuts
+nnoremap <ESC>c "+yy<CR>
+vnoremap <ESC>c "+yy<CR>
+" Pasting Shorcuts
+nnoremap <ESC>v :call PasteMe()<CR>
+vnoremap <ESC>v :call PasteMe()<CR>
+inoremap <ESC>v <C-O>:call PasteMe()<CR>
+
+vnoremap <silent> * :call VisualSelection('f')<CR>
+vnoremap <silent> # :call VisualSelection('b')<CR>
+map <silent> <leader><cr> :nohls<cr>
+
+if exists("vimpager")
+  if exists("vimpager_ptree") && vimpager_ptree[-2] == 'wman'
+    set ft=man
+  endif
+endif

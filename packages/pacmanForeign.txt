@@ -1,0 +1,12 @@
+artha
+google-chrome
+hunspell-pt_pt
+hunspell-pt_pt-preao
+hyphen-pt_pt
+libtinfo
+libtinfo-5
+mythes-pt_pt
+pacaur
+pdftk-bin
+radiotray
+xss-lock

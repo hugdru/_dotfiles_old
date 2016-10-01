@@ -1,0 +1,20 @@
+#!/usr/bin/env sh
+
+# Looks at a foo.desktop file and xdg-mime defaults foo.desktop allSupportedMimesInFoo.desktop
+
+if ! type xdg-mime 2>&1 > /dev/null; then
+    echo 'Please install xdg-mime'
+fi
+
+if [ $# -ne 1 -o ! -f $1 ]; then
+    echo "usage: $0 foo.desktop"
+fi
+
+desktopFilePath="$1"
+desktopFileName="${desktopFilePath##*/}"
+
+IFS=$'\n;'
+for mimeType in $(sed -r -n "s/^mimetype=('|\")?(.*)('|\")?$/\2/pI" "$desktopFilePath"); do
+    echo "xdg-mime default $desktopFileName $mimeType"
+    xdg-mime default "$desktopFileName" "$mimeType"
+done

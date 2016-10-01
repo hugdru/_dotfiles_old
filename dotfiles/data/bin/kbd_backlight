@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+
+set -e
+
+ledsPath="/sys/devices/platform/samsung/leds/samsung::kbd_backlight"
+maxBrightnessPath="${ledsPath}/max_brightness"
+currentBrightnessPath="${ledsPath}/brightness"
+
+if [[ "$#" -ne 1 ]]; then
+  echo "usage: $0 (+|-)(percentage)?" >&2
+  exit 1
+fi
+
+value=$1
+if ! [[ "$value" =~ ^(\+|-)[0-9]{0,2}$ ]]; then
+  echo "$value"
+  echo "usage: $0 (+|-)[0-9](percentage)?" >&2
+  exit 1
+fi
+
+if [[ -d "$ledsPath" ]]; then
+
+  maxBrightness="$(cat "$maxBrightnessPath")"
+  currentBrightness="$(cat "$currentBrightnessPath")"
+
+  if [[ -n "$maxBrightness" && -n "$currentBrightness" ]]; then
+
+    case "$value" in
+      "+") step=1 ;;
+      "-") step=-1 ;;
+      *)
+        value=${value##+};
+
+        if [[ "$value" = "0"  || "$value" = "-0" ]]; then
+          exit 0
+        fi
+
+        step="$(bc <<< "$maxBrightness * "$value" / 100")"
+        if [[ "$step" -eq 0 ]]; then
+          if [[ "$value" -lt 0 ]]; then step=-1; else step=1; fi
+        fi
+    esac
+
+    if [[ "$currentBrightness" -eq "$maxBrightness" && "$step" -gt 0 ]] || [[ "$currentBrightness" -eq 0 &&  "$step" -lt 0 ]]; then
+      exit 0
+    fi
+
+    proprosedBrightness=$(($step + $currentBrightness))
+    if [[ "$proprosedBrightness" -gt "$maxBrightness" ]]; then
+      echo "$maxBrightness" | sudo tee "$currentBrightnessPath"
+    elif [[ "$proprosedBrightness" -lt 0 ]]; then
+      echo "0" | sudo tee "$currentBrightnessPath"
+    else
+      echo "$proprosedBrightness" | sudo tee "$currentBrightnessPath"
+    fi
+  fi
+fi

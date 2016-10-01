@@ -1,0 +1,23 @@
+#!/usr/bin/env zsh
+
+alias vi="vim"
+alias vim="nvim"
+alias vimdiff="vim -d"
+alias o="open"
+alias ofc="openFileContents"
+alias vimrc="vim $HOME/.config/nvim/init.vim"
+
+function cdcol {
+  findMe "$HOME/data/collegeMIEIC" "$@"
+}
+
+function proj {
+  findMe "$HOME/data/projetos/" "$@"
+}
+
+alias ls='ls --color=auto'
+alias dir='dir --color=auto'
+alias vdir='vdir --color=auto'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'

@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+if [[ $# -eq 0 ]]; then
+  xdg-open . > /dev/null 2>&1 &
+else
+  xdg-open "$@" > /dev/null 2>&1 &
+fi

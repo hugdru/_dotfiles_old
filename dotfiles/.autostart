@@ -1,0 +1,13 @@
+udiskie -2 -t &
+xbindkeys &
+nm-applet &
+xscreensaver -no-splash &
+xss-lock -- xscreensaver-command -lock &
+compton --backend glx --paint-on-overlay --vsync opengl-swc &
+volumeicon &
+cbatticon &
+chromium & #chromium,web,class
+thunderbird &
+qtox &
+artha &
+zim &

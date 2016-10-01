@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+
+#if ! [[ "$(pidof unbound)" ]]; then
+  #echo 'unbound is down. root.hints was NOT updated.'
+  #exit 1
+#fi
+
+#rootHintsDirectory='/var/lib/unbound'
+rootHintsDirectory='/etc/unbound'
+rootHintsTempFile="/tmp/root.hints.temp$$"
+
+cd "$rootHintsDirectory" || {
+  echo "Cannot cd to $rootHintsDirectory, error $?"
+  exit 1
+}
+
+case "$(ping -qnc 1 google.com 2>&1)" in
+  *'100% packet loss'*)
+    echo "root.hints NOT updated.  The network is DOWN."
+    exit 1
+    ;;
+esac
+
+dig @e.root-servers.net . NS +norec > "$rootHintsTempFile"
+
+case "$(cat "$rootHintsTempFile")" in
+  *NOERROR*)
+    # It worked
+    ;;
+  *)
+    echo "The root.hints file update has FAILED."
+    exit 1
+    ;;
+esac
+
+chown root.root "$rootHintsTempFile"
+chmod 444 "$rootHintsTempFile"
+rm -f root.hints.old
+mv root.hints root.hints.old 2>/dev/null
+mv "$rootHintsTempFile" root.hints
+echo 'The root.hints file has been updated.'
+
+#systemctl restart unbound.service
+#echo "The nameserver has been restarted to ensure that the update is complete."

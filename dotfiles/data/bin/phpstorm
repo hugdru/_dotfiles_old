@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+phpstorm="$HOME/data/opt/PhpStorm"
+
+phpstorm_folder="$(ls -dvr "$phpstorm"* | head -n 1)"
+
+"${phpstorm_folder}/bin/phpstorm.sh"

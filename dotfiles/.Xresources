@@ -1,0 +1,158 @@
+! Font rendering options
+Xft.dpi: 130
+Xft.antialias: true
+Xft.hinting: true
+Xft.rgba: rgb
+Xft.autohint: true
+Xft.hintstyle: hintfull
+Xft.lcdfilter: lcddefault
+
+! With the help of
+! https://github.com/wget/dotfiles/blob/master/Xresources
+! http://pod.tst.eu/http://cvs.schmorp.de/rxvt-unicode/doc/rxvt.1.pod
+
+! Have a look at https://wiki.archlinux.org/index.php/bash to understand what this implies
+URxvt.loginShell: false
+! default = selection, option-popup, selection-popup, readline, searchable-scrollback
+!URxvt.perl-ext-common: default,clipboard,keyboard-select,url-select
+URxvt.perl-ext-common: clipboard
+
+! Turn on/off double-buffering for xft, double-buffering avoids bad image rendering, while graphics card processes one buffer the second one gets filled with the image info to be processed afterwards. This tries to avoid processing semi-transfered information.
+URxvt.buffered: true
+
+! Remove special character insertion, done by Ctrl+shift keybinding
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+
+!Scroll Options
+URxvt.scrollBar: false
+URxvt.scrollBar_right: false
+URxvt.scrollBar_floating: false
+URxvt.scollTtyOutput: false
+URxvt.scrollWithBuffer: true
+URxvt.scrollTtyKeypress: true
+
+URxvt.secondaryScreen: true
+URxvt.secondaryScroll: true
+
+URxvt.borderLess: false
+URxvt.internalBorder: 0
+URxvt.externalBorder: 0
+
+URxvt.cursorBlink: false
+URxvt.saveLines: 65535
+URxvt.imLocale: en_US.UTF-8
+
+URxvt.urgentOnBell: true
+URxvt.mapAlert: true
+URxvt.visualBell: false
+
+URxvt.keysym.Shift-Control-C: perl:clipboard:copy
+URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+
+!h/j/k/l:    Move cursor left/down/up/right (also with arrow keys)
+!g/G/0/^/$/H/M/L/f/F/;/,/w/W/b/B/e/E: More vi-like cursor movement keys
+!'/'/?:      Start forward/backward search
+!n/N:        Repeat last search, N: in reverse direction
+!Ctrl-f/b:   Scroll down/up one screen
+!Ctrl-d/u:   Scroll down/up half a screen
+!v/V/Ctrl-v: Toggle normal/linewise/blockwise selection
+!y/Return:   Copy selection to primary buffer, Return: quit afterwards
+!Y:          Copy selected lines to primary buffer or cursor line and quit
+!q/Escape:   Quit keyboard selection mode
+!URxvt.keysym.M-Escape: perl:keyboard-select:activate
+!URxvt.keysym.M-s: perl:keyboard-select:search
+
+!j/k:      Select next downward/upward URL (also with arrow keys)
+!g/G:      Select first/last URL (also with home/end key)
+!o/Return: Open selected URL in browser, Return: deactivate afterwards
+!y:        Copy (yank) selected URL and deactivate selection mode
+!q/Escape: Deactivate URL selection mode
+!URxvt.keysym.M-u: perl:url-select:select_next
+!URxvt.url-select.underline: true
+!URxvt.url-select.launcher: chromium
+!URxvt.url-select.button: 2
+!URxvt.url-select.autocopy: true
+
+! Fake transparency copies from root window
+!URxvt.transparent: true
+!URxvt.shading: 15
+
+! Real transparency must have compositing: compton, xcompmgr, etc.
+! Number of bits used to represent the color of each pixel, 32 <- 8 * (3+1) for each component RGB and for alpha transparency bits
+URxvt.depth: 32
+URxvt.font: xft:Source code Pro For Powerline:size=14:antialias=true:hinting=true:style=Medium
+URxvt.boldFont: xft:Source code Pro For Powerline:size=14:antialias=true:hinting=true:style=Medium
+URxvt.italicFont: xft:Source code Pro For Powerline:size=14:antialias=true:hinting=true:style=Medium
+URxvt.boldItalicFont: xft:Source Code Pro For Powerline:size=14:antialias=true:hinting=true:style=Medium
+
+! Change this value for the symbols to appear, might break because of font size
+URxvt.letterSpace: 0
+
+URxvt.intensityStyles: false
+
+URxvt.colorIT: #87af5f
+URxvt.colorBD: #d7d7d7
+URxvt.colorUL: #87afd7
+
+! From https://github.com/altercation/solarized/blob/master/xresources/solarized
+
+! Common
+#define S_yellow        #b58900
+#define S_orange        #cb4b16
+#define S_red           #dc322f
+#define S_magenta       #d33682
+#define S_violet        #6c71c4
+#define S_blue          #268bd2
+#define S_cyan          #2aa198
+#define S_green         #859900
+
+! Dark
+#define S_base03        #002b36
+#define S_base02        #073642
+#define S_base01        #586e75
+#define S_base00        #657b83
+#define S_base0         #839496
+#define S_base1         #93a1a1
+#define S_base2         #eee8d5
+#define S_base3         #fdf6e3
+
+URxvt.background:            S_base03
+URxvt.foreground:            S_base0
+URxvt.fading:                40
+URxvt.fadeColor:             S_base03
+URxvt.cursorColor:           S_base1
+URxvt.pointerColorBackground:S_base01
+URxvt.pointerColorForeground:S_base1
+
+!! black dark/light
+URxvt.color0:                S_base02
+URxvt.color8:                S_base03
+
+!! red dark/light
+URxvt.color1:                S_red
+URxvt.color9:                S_orange
+
+!! green dark/light
+URxvt.color2:                S_green
+URxvt.color10:               S_base01
+
+!! yellow dark/light
+URxvt.color3:                S_yellow
+URxvt.color11:               S_base00
+
+!! blue dark/light
+URxvt.color4:                S_blue
+URxvt.color12:               S_base0
+
+!! magenta dark/light
+URxvt.color5:                S_magenta
+URxvt.color13:               S_violet
+
+!! cyan dark/light
+URxvt.color6:                S_cyan
+URxvt.color14:               S_base1
+
+!! white dark/light
+URxvt.color7:                S_base2
+URxvt.color15:               S_base3

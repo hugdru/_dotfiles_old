@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+idea_folder_inc="$HOME/data/opt/idea"
+
+idea_folder="$(ls -dvr "$idea_folder_inc"* | head -n 1)"
+
+"${idea_folder}/bin/idea.sh"

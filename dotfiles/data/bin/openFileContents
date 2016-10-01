@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+if [[ $# -ne 1 ]]; then
+  echo "usage: ${0##*/} file" 1>&2
+  exit 1
+fi
+
+while IFS= read -r -d $'\n' target; do
+  xdg-open "$target"
+done < "$1"

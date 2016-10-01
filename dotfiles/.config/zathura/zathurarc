@@ -1,0 +1,5 @@
+set selection-clipboard clipboard
+map <Space> navigate next
+map <S-Space> navigate previous
+map b toggle_statusbar
+set guioptions ""

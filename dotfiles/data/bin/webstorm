@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+webstorm="$HOME/data/opt/WebStorm"
+
+webstorm_folder="$(ls -dvr "$webstorm"* | head -n 1)"
+
+"${webstorm_folder}/bin/webstorm.sh"

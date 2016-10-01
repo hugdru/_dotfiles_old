@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+if [[ $# -eq 1 ]]; then
+  systemctl list-unit-files | grep -E -i -- "$1"
+else
+  echo "Usage: $0 name" 1>&2
+fi

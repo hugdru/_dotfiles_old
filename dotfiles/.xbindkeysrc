@@ -1,0 +1,29 @@
+"xbacklight -inc 10"
+    XF86MonBrightnessUp
+
+"xbacklight -dec 10"
+    XF86MonBrightnessDown
+
+"amixer set Master toggle"
+    XF86AudioMute
+
+"amixer set Master 5%-"
+    XF86AudioLowerVolume
+
+"amixer set Master 5%+"
+    XF86AudioRaiseVolume
+
+"kbd_backlight -"
+    XF86KbdBrightnessDown
+
+"kbd_backlight +"
+    XF86KbdBrightnessDown
+
+"wireless_switch"
+    XF86WLAN
+
+"spectacle"
+    Print
+
+"kbd_layout"
+  XF86Launch1

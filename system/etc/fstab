@@ -1,0 +1,8 @@
+#
+# /etc/fstab: static file system information
+#
+# <file system> <dir> <type>  <options> <dump>  <pass>
+# /dev/mapper/GnuLinuxVG-archLV LABEL=archFS
+UUID=6b4a8d72-06a9-47a5-abaf-9a46839428ce /           ext4        defaults,relatime   0 1
+#tmpfs                                     /tmp        tmpfs       rw,nosuid,nodev,relatime    0 0
+UUID=fc24e43d-c288-4ca4-a622-ac5b1dafc378 none swap defaults 0 0

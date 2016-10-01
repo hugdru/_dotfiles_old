@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+
+if [ "$(cat /sys/class/rfkill/rfkill0/soft)" -eq 1 ];
+then
+    rfkill unblock wifi
+    zenity --notification --text="The wireless card has been unblocked"
+else
+    rfkill block all
+    zenity --notification --text="The wireless card has been blocked"
+fi
+
+exit 0

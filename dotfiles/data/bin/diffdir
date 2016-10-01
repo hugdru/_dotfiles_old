@@ -1,0 +1,21 @@
+#!/usr/bin/env zsh
+
+if [[ $# -ne 2 || ! (-d $1 && -d $2) ]] then
+  1>&2 echo "$0 directory1 directory2"
+  exit 1
+fi
+
+main_dir=$1
+other_dir=${2%/}
+
+find $main_dir -type f -printf '%P\0' | while read -d $'\0' file
+do
+  other_file=$other_dir/$file
+  if [[ -f $other_file ]] then
+    if [[ -n $(diff -q $file $other_file) ]] then
+      nvim -d $file $other_file < /dev/null
+    fi
+  else
+    1>&2 echo "$other_file not found"
+  fi
+done

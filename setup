@@ -1,0 +1,189 @@
+#!/usr/bin/env zsh
+
+set -e
+
+conf_dir=$HOME/configuration
+app_dir=$conf_dir/packages
+sys_dir=$conf_dir/system
+dot_dir=$conf_dir/dotfiles
+pacman_native='pacmanNative.txt'
+pacman_foreign='pacmanForeign.txt'
+composer='composer.txt'
+pip='pip.txt'
+gem='gem.txt'
+npm='npm.txt'
+
+main() (
+  if [[ $# -ne 1 || ($1 != 'save' && $1 != 'install' && $1 != 'links') ]] then
+    1>&2 echo "$0 (save|install|links)"
+  fi
+  $1
+)
+
+save () (
+  mkdir -p $app_dir
+  mkdir -p $sys_dir
+
+  pacman -Qqen > $app_dir/$pacman_native
+  pacman -Qqem > $app_dir/$pacman_foreign
+
+  pip list --user | awk '{print $1}' > $app_dir/$pip
+  composer global show --direct | awk '{print $1}' > $app_dir/$composer
+  gem list --local --no-details --no-versions -q > $app_dir/$gem
+  ls $(npm root -g) > $app_dir/$npm
+
+  sysFiles=(
+    '/etc/default/tlp'
+    '/etc/iptables/iptables.rules' '/etc/iptables/ip6tables.rules'
+    '/etc/iptables/iptables_torrent.rules' '/etc/iptables/ip6tables_torrent.rules'
+    '/etc/unbound/unbound.conf' '/etc/unbound/adservers' '/etc/tor/torrc'
+    '/etc/dhcpcd.conf' '/etc/hostname' '/etc/host.conf' '/etc/hosts'
+    '/etc/dhclient.conf' '/etc/resolvconf.conf'
+    '/etc/systemd/logind.conf' '/etc/systemd/timesyncd.conf'
+    '/etc/systemd/coredump.conf' '/etc/systemd/journald.conf'
+    '/etc/modprobe.d/' '/etc/modules-load.d' '/etc/udev/rules.d' '/etc/mkinitcpio.conf'
+    '/etc/fstab' '/etc/sysctl.d'  '/etc/conf.d/wireless-regdom' '/etc/lvm/lvm.conf'
+    '/etc/security/pam_mount.conf.xml' '/etc/pam.d/system-auth'
+    '/etc/openal' '/etc/libao.conf' '/etc/asound.conf' '/etc/pulse'
+    '/etc/locale.conf' '/etc/locale.gen' '/etc/vconsole.conf' '/etc/inputrc' '/etc/localtime'
+    '/etc/X11/xinit/xinitrc.d' '/etc/X11/xorg.conf.d'
+    '/etc/pacman.conf'  '/etc/makepkg.conf'
+    '/etc/security/limits.conf'
+    '/etc/colorgcc/colorgccrc'
+    '/etc/group'
+    '/etc/NetworkManager/NetworkManager.conf'
+  )
+
+  cp --parents -a $sysFiles $sys_dir
+  chmod 644 $sys_dir/etc/unbound/unbound.conf
+)
+
+install() (
+  ########## 1 - If logged in as root ask for target user ##########
+  if [[ $EUID -eq 0 ]] then
+    echo 'install files for user with username...'
+    read $user
+    if [[ -z $(getent passwd $user) ]] then
+      useradd -m -g $user -G wheel,uucp,rfkill,games,users,vboxusers,wireshark,hugdru,networkmanager -s /bin/zsh $user
+      home=/home/$user
+      mkdir -p $home
+      chown -R $user:$user $home
+    fi
+    su $user
+  fi
+  ##########                   End of 1                   ##########
+
+  ##########  2 - Get private keys, data and other personal stuff  ##########
+  echo 'Getting personal files'
+  private_storage_uuid='ffbc86b7-419d-4c71-a094-3670693e65de'
+  private_storage="$(mount | grep $(readlink -f /dev/disk/by-uuid/$private_storage_uuid) | awk '{print $3}')"
+
+  if [[ -z $private_storage ]]; then
+    1>&2 echo 'Private storage not mounted'
+    exit 1
+  fi
+
+  backups=$private_storage/borgBackups
+  backup=$(borg list $backups | tail -n 1 | awk '{print $1}')
+  backup_home=home/$USER
+  data_to_extract=($backup_home/.gnupg $backup_home/.weechat $backup_home/.config/tox)
+  cd /
+  borg extract $backups::$backup $data_to_extract
+  ##########                       End of 2                        ##########
+
+  ########## 3 - Configuration files ##########
+  if [[ ! -d $conf_dir/.git ]] then
+    git clone git@bitbucket.org:hugdru/archlinuxconfiguration.git $conf_dir
+  fi
+
+  echo 'Setting up symbolic links'
+  setUpSymbolicLinks $dot_dir
+  ##########        End of 3         ##########
+
+  ########## 4 - Packages ##########
+  # Composer
+  composer global require $(<$app_dir/$composer)
+  # Pip
+  pip install --user $(<$app_dir/$pip)
+  # npm
+  npm install --global $(<$app_dir/$npm)
+  # gem
+  gem install $(<$app_dir/$gem)
+
+  # pip freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs pip install --user --upgrade
+  #
+  # missing picard settings
+  # missing pcmanfm settings
+  # missing qbittorrent settings
+  # missing elixir vim
+
+  ########## 5 - nvim configuration ##########
+  curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  nvim -c ':PlugUpdate | :qa'
+  $HOME/.config/nvim/plugged/YouCompleteMe/install.py --all
+  ##########        End of 4        ##########
+
+  ########## 6 - zsh setup ##########
+  curl -sL https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+  ##########   End of 5    ##########
+
+  ########## 8 - awesome-terminal-fonts ##########
+  tmp_dir="/tmp/awesome-terminal-fonts-$$"
+  git clone https://github.com/gabrielelana/awesome-terminal-fonts.git $tmp_dir
+  fonts_dir="$HOME/.local/share/fonts/"
+  mkdir -p $fonts_dir
+  cp $tmp_dir/build/*.ttf $fonts_dir
+  rm -rf $tmp_dir
+  ##########          End of 8          ##########
+
+  ########## 9 - nerd-fonts ##########
+  cd ~/.local/share/fonts
+  wget 'https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/AnonymousPro/complete/Anonymice%20Powerline%20Nerd%20Font%20Complete%20Mono.ttf'
+  fc-cache -fv ~/.local/share/fonts
+  ##########    Enf of 9    ##########
+)
+
+links() (
+  setUpSymbolicLinks $dot_dir
+)
+
+setUpSymbolicLinks() (
+  if [[ $# -ne 1 || ! -d $1 ]] then
+    1>2 echo "$funcstack[1] expects a path to a directory"
+  fi
+  oldPwd=$PWD
+  cd $1
+  setUpSymbolicLinksAux
+  cd $oldPWD
+)
+
+setUpSymbolicLinksAux() (
+  if [[ $# -gt 1 ]] then
+    1>&2 echo 'expects only 1 relative path or none.'
+    exit 1
+  fi
+
+  relative_dir="./"
+  if [[ $# -eq 1 ]] then
+    relative_dir=$1;
+    if [[ ${relative_dir: -1} != "/" ]] then relative_dir+="/"; fi
+  fi
+
+  find $relative_dir -maxdepth 1 -type f -printf '%P\0' | while read -d $'\0' file
+  do
+    relative_file_path=${relative_dir#./}$file
+    ln -f -s $PWD/$relative_file_path $HOME/$relative_file_path
+  done
+
+  find $relative_dir -maxdepth 1 ! -path $relative_dir -type d -printf '%P\0' | while read -d $'\0' directory
+  do
+    target_dir=$relative_dir$directory/
+    if [[ ! -d $HOME/$target_dir ]] then
+      mkdir $HOME/$target_dir
+    fi
+    setUpSymbolicLinksAux $target_dir
+  done
+)
+
+main $@

@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+dartium_folder_inc="$HOME/data/opt/dartium"
+
+dartium_folder="$(ls -dvr "$dartium_folder_inc"* | head -n 1)"
+
+"${dartium_folder}/chrome"

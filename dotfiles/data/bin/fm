@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+musicPaths=("$HOME/data/Music" "$HOME/data/musicUnknown")
+
+if [[ $# -ne 1 ]]; then
+  programName="${0##*/}"
+  echo "usage: $programName fileName"
+  exit 1
+fi
+
+fileName="$1"
+
+find "${musicPaths[@]}" -type f -iname "*${fileName}*"

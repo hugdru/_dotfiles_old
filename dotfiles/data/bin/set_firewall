@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+usage() {
+  1>&2 echo "${0##*/} (torrent | default)"
+  exit 1
+}
+
+if [[ $# -ne 1 ]]; then
+  usage
+fi
+
+case $1 in
+  'torrent')
+    sudo iptables-restore /etc/iptables/iptables_torrent.rules
+    sudo ip6tables-restore /etc/iptables/ip6tables_torrent.rules
+    ;;
+  'default')
+    sudo iptables-restore /etc/iptables/iptables.rules
+    sudo ip6tables-restore /etc/iptables/ip6tables.rules
+    ;;
+  *)
+    usage
+    ;;
+esac

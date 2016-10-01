@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+android_studio="$HOME/data/opt/android-studio"
+
+android_studio_folder="$(ls -dvr "$android_studio"* | head -n 1)"
+
+"${android_studio_folder}/bin/studio.sh"

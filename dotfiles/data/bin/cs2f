@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+if [[ "$#" -ne 2 ]]; then
+  echo "$0 folder compareFolder"
+  exit 1
+fi
+
+folder="${1}/"
+compareFolder="${2}/"
+
+if ! [[ -d "$folder" && -d "$compareFolder" ]]; then
+  echo 'The two arguments must be folders'
+  exit 1
+fi
+
+find $folder -type f -printf '%P\0' | while read -d $'\0' file
+do
+
+  fileFolder="$folder$file"
+  compareFileFolder="$compareFolder$file"
+
+  if ! [[ -f "$compareFileFolder" ]]; then
+    echo "Missing: $compareFileFolder"
+    continue
+  fi
+
+  checksum=($(sha512sum "$fileFolder" "$compareFileFolder" | awk '{print $1}'))
+
+  if [[ ${checksum[0]} != ${checksum[1]} ]]; then
+    echo "Invalid: $compareFileFolder"
+    continue
+  fi
+
+done
+
+exit 0

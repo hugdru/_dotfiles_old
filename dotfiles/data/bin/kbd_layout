@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+layouts=("pt" "gb")
+default_layout="pt"
+
+current_layout="$(setxkbmap -print | grep xkb_symbols | awk '{print $4}' | awk -F"+" '{print $2}')"
+current_layout="${current_layout:-"$default_layout"}"
+
+last_index=$((${#layouts[@]}-1))
+
+for index in "${!layouts[@]}"
+do
+  if [[ "$current_layout" == "${layouts[index]}" ]]; then
+    if [[ "$index" == "$last_index" ]]; then
+      setlayout="${layouts[0]}"
+    else
+      setlayout="${layouts[$(($index+1))]}"
+    fi
+
+    zenity --notification --text="KeyboardLayout set to $setlayout"
+    setxkbmap "$setlayout"
+    exit 0
+  fi
+done
+
+zenity --notification --text="Failed to set KeyboardLayout"
+exit 1
