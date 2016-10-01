@@ -57,7 +57,8 @@ https://www.gnupg.org/ - to hold all keys including git keys
 * http://www.incenp.org/notes/2015/gnupg-for-ssh-authentication.html
 
 ## Partitioning ##
-I am using mbr-bios because of the samsung_laptop bugs in efi. The two first partitions are for windows the rest for linux.
+I am using mbr-bios because of the samsung_laptop bugs in efi. The two first partitions are for windows and the other one for linux.
 For EFI add the ESP partition and change the partitioning scheme.
 * https://wiki.archlinux.org/index.php/Dm-crypt/Encrypting_an_entire_system#LVM_on_LUKS
 * http://www.pavelkogan.com/2014/05/23/luks-full-disk-encryption/
+![partitioning](https://github.com/hugdru/dotfiles/blob/master/partitioning.png)
