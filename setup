@@ -152,10 +152,16 @@ setUpSymbolicLinks() (
   if [[ $# -ne 1 || ! -d $1 ]] then
     1>2 echo "$funcstack[1] expects a path to a directory"
   fi
+  echo 'Symbolic Links will override any existing files! You might lose your configuration files! Yy to continue'
+  read response
+  if [[ $response != "Yy" ]] then
+    return
+  fi
   oldPwd=$PWD
   cd $1
   setUpSymbolicLinksAux
   cd $oldPWD
+  echo 'Symbolic Links set'
 )
 
 setUpSymbolicLinksAux() (
