@@ -24,6 +24,9 @@ But should create an user if needed, get private stuff from a backup, clone the 
 install the apps, load nvim pluggins and compile what is needed, install fonts, etc. I'll test it eventually.
 
 ## I use ##
+#### keymap ####
+I use two layouts, Option "XkbLayout" "pt,gb". I only use pt for chatting, everything else I do with gb. Meaning, all shortcuts are configured with gb in mind. Coding and using vim with an english layout is much better :)
+
 #### distro ####
 https://www.archlinux.org/
 
@@ -34,6 +37,14 @@ https://borgbackup.readthedocs.io/en/stable/
 https://www.unbound.net/
 * https://raw.githubusercontent.com/hugdru/dotfiles/master/system/etc/dhclient.conf
 * https://raw.githubusercontent.com/hugdru/dotfiles/master/system/etc/NetworkManager/NetworkManager.conf
+
+#### colors ####
+I use solarized everywhere. Consistency :)
+
+#### editor ####
+https://github.com/neovim/neovim <br>
+I use neovim, dotfiles/.vimrc is outdated and I no longer use "normal" vim. vim and vimdiff are aliased to nvim and nvim -d.
+* https://github.com/hugdru/dotfiles/blob/master/dotfiles/.config/nvim/init.vim
 
 #### wm manager ####
 https://awesome.naquadah.org/ - My configuration is pretty simple I don't like to have too many things in the way.
