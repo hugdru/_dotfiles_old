@@ -38,8 +38,8 @@ https://www.unbound.net/
 * https://raw.githubusercontent.com/hugdru/dotfiles/master/system/etc/dhclient.conf
 * https://raw.githubusercontent.com/hugdru/dotfiles/master/system/etc/NetworkManager/NetworkManager.conf
 
-#### colors ####
-I use solarized everywhere. Consistency :)
+#### colors, themes and icons, filemanager ####
+I use solarized everywhere, consistency :). Numix and Faenza-Darkest. PCManFM.
 
 #### terminal and shell ####
 urxvt, zsh with zplug.
