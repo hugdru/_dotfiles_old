@@ -15,7 +15,7 @@ A zsh script with functions to help save, create links and install the configura
 #### ./setup links ####
 Creates symbolic links in $HOME with the same structure as what is inside the dotfiles dir. For example, $HOME/.config/awesome/rc.lua -> $HOME/configuration/dotfiles/.config/awesome/rc.lua.
 I choose this structure cause this way I avoid adding/ignoring lots of files and slowing down my $HOME because of zsh git plugins and prompt.
-This way it is almost impossible to add private files since I must move them explicitly to $HOME/configuration/dotfiles/.
+This way it is almost impossible to add private files since I must move them explicitly to $HOME/configuration/, the git repository.
 #### ./setup save ####
 Saves all the system files to the system folder and info about installed software to the respective files in packages.
 #### ./setup install ####
@@ -62,6 +62,8 @@ https://awesome.naquadah.org/ - My configuration is pretty simple I don't like t
    * Alt tab, cycles the windows forward on a tag
    * Alt Shift tab, same but the other way
    * Modkey \, switches between current and last tag
+   * Modkey f, to set window to maximize.
+   * Modkey shift f, to set window to full screen.
 
 #### keys ####
 https://www.keepassx.org/ - to hold credentials for websites, etc.<br>
@@ -76,6 +78,6 @@ For EFI add the ESP partition and change the partitioning scheme.
 * https://wiki.archlinux.org/index.php/Dm-crypt/Encrypting_an_entire_system#LVM_on_LUKS
 * http://www.pavelkogan.com/2014/05/23/luks-full-disk-encryption/
 ![partitioning](https://github.com/hugdru/dotfiles/blob/master/partitioning.png) <br>
-I changed the default user-dirs environment variables because I keep all important files like projects, pictures, and so on on a separate partition. Namely the data partition. I do this so I can mount it easily on windows, other distros, etc without carrying distro specific temp files, configurations, etc. <br>
+I changed the default user-dirs environment variables because I keep all important files like projects, pictures, and so on on a separate partition. Namely the data partition. I do this so I can mount it easily on windows, other distros, etc without carrying distro specific configurations, temp files, etc. <br>
 Check https://github.com/hugdru/dotfiles/blob/master/dotfiles/.config/user-dirs.dirs
 
