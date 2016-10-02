@@ -51,6 +51,7 @@ zplug "plugins/gulp", from:oh-my-zsh, nice:10
 zplug "plugins/man", from:oh-my-zsh, nice:10
 zplug "plugins/pip", from:oh-my-zsh, nice:10
 zplug "plugins/vi-mode", from:oh-my-zsh, nice:10
+zplug "plugins/golang", from:oh-my-zsh, nice:10
 # zplug 'themes/sorin', from:oh-my-zsh, nice:11
 # zplug "arialdomartini/oh-my-git", use:"*.sh"
 # zplug "arialdomartini/oh-my-git-themes", use:"oppa-lana-style.zsh-theme"

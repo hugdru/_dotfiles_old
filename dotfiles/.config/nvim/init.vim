@@ -196,12 +196,12 @@ set shiftround                       " Round spaces to nearest shiftwidth multip
 set nojoinspaces                     " Don't convert spaces to tabs
 set nosmartindent                    " Do not do smart autoindenting when starting a new line
 set cindent                          " Do restricted smart indent for c
-"set textwidth=80                     " Lines longer than x break
+"set textwidth=80                    " Lines longer than x break
 set formatoptions=tcroqnj            " see help formatoptions
 " }}}
 
 set backspace=indent,eol,start       " Allow backspacing over everything in insert mode
-set iskeyword+=_,$,@,%,#              " these characters should not be dividers
+set iskeyword+=_,$,@,%,#             " these characters should not be dividers
 
 " Better split opening
 set splitright
