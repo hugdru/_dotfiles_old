@@ -152,43 +152,21 @@ setUpSymbolicLinks() (
   if [[ $# -ne 1 || ! -d $1 ]] then
     1>2 echo "$funcstack[1] expects a path to a directory"
   fi
+
   echo 'Symbolic Links will override any existing files! You might lose your configuration files! Yy to continue'
   read response
+
   if [[ $response != "Yy" ]] then
     return
   fi
-  oldPwd=$PWD
-  cd $1
-  setUpSymbolicLinksAux
-  cd $oldPWD
-  echo 'Symbolic Links set'
-)
 
-setUpSymbolicLinksAux() (
-  if [[ $# -gt 1 ]] then
-    1>&2 echo 'expects only 1 relative path or none.'
-    exit 1
-  fi
-
-  relative_dir="./"
-  if [[ $# -eq 1 ]] then
-    relative_dir=$1;
-    if [[ ${relative_dir: -1} != "/" ]] then relative_dir+="/"; fi
-  fi
-
-  find $relative_dir -maxdepth 1 -type f -printf '%P\0' | while read -d $'\0' file
+  find $1 -type f -printf '%P\0' | while read -d $'\0' file
   do
-    relative_file_path=${relative_dir#./}$file
-    ln -f -s $PWD/$relative_file_path $HOME/$relative_file_path
-  done
-
-  find $relative_dir -maxdepth 1 ! -path $relative_dir -type d -printf '%P\0' | while read -d $'\0' directory
-  do
-    target_dir=$relative_dir$directory/
-    if [[ ! -d $HOME/$target_dir ]] then
-      mkdir $HOME/$target_dir
+    dir=$HOME/${file%/*}
+    if [[ -d $dir ]] then
+      mkdir -p $HOME/${file%/*}
     fi
-    setUpSymbolicLinksAux $target_dir
+    ln -f -s $1/$file $HOME/$file
   done
 )
 
