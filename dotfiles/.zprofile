@@ -22,7 +22,7 @@ colorgcc_folder='/usr/lib/colorgcc/bin/'
 export GOPATH="$HOME/data/golang"
 ##
 
-export PATH="$HOME/data/bin:$pip_folder:$npm_folder:$composer_folder:$sicstus_folder:$ruby_folder:$colorgcc_folder:$PATH"
+export PATH="$HOME/data/bin:$pip_folder:$npm_folder:$composer_folder:$sicstus_folder:$ruby_folder:$colorgcc_folder:$GOPATH/bin:$PATH"
 
 export CCACHE_PATH='/usr/bin'
 export CCACHE_DIR='/tmp/ccache'

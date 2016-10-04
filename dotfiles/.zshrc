@@ -40,19 +40,19 @@ zplug "seebi/dircolors-solarized"
 
 # oh-my-zsh stuff
 zplug "robbyrussell/oh-my-zsh", use:"lib/*.zsh", nice:-1
-zplug "plugins/git", from:oh-my-zsh, nice:10
-zplug "plugins/archlinux", from:oh-my-zsh, nice:10
-zplug "plugins/npm", from:oh-my-zsh, nice:10
-zplug "plugins/bower", from:oh-my-zsh, nice:10
-zplug "plugins/docker", from:oh-my-zsh, nice:10
-zplug "plugins/go", from:oh-my-zsh, nice:10
-zplug "plugins/gradle", from:oh-my-zsh, nice:10
-zplug "plugins/gulp", from:oh-my-zsh, nice:10
-zplug "plugins/man", from:oh-my-zsh, nice:10
-zplug "plugins/pip", from:oh-my-zsh, nice:10
-zplug "plugins/vi-mode", from:oh-my-zsh, nice:10
-zplug "plugins/golang", from:oh-my-zsh, nice:10
-# zplug 'themes/sorin', from:oh-my-zsh, nice:11
+zplug "plugins/git", from:oh-my-zsh
+zplug "plugins/archlinux", from:oh-my-zsh
+zplug "plugins/npm", from:oh-my-zsh
+zplug "plugins/bower", from:oh-my-zsh
+zplug "plugins/docker", from:oh-my-zsh
+zplug "plugins/go", from:oh-my-zsh
+zplug "plugins/gradle", from:oh-my-zsh
+zplug "plugins/gulp", from:oh-my-zsh
+zplug "plugins/man", from:oh-my-zsh
+zplug "plugins/pip", from:oh-my-zsh
+zplug "plugins/vi-mode", from:oh-my-zsh
+zplug "plugins/golang", from:oh-my-zsh
+# zplug 'themes/sorin', from:oh-my-zsh
 # zplug "arialdomartini/oh-my-git", use:"*.sh"
 # zplug "arialdomartini/oh-my-git-themes", use:"oppa-lana-style.zsh-theme"
 
