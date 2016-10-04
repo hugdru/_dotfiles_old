@@ -6,6 +6,7 @@ alias vimdiff="vim -d"
 alias o="open"
 alias ofc="openFileContents"
 alias vimrc="vim $HOME/.config/nvim/init.vim"
+alias v="$EDITOR"
 
 function cdcol {
   findMe "$HOME/data/collegeMIEIC" "$@"

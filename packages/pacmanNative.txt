@@ -120,8 +120,10 @@ hunspell
 hunspell-en
 hyphen
 hyphen-en
+i2c-tools
 inetutils
 intel-ucode
+inxi
 iproute2
 iputils
 isync

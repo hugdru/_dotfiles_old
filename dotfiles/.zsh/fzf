@@ -1,0 +1,39 @@
+#!/usr/bin/env zsh
+
+# From https://github.com/junegunn/fzf/wiki/examples
+
+F() {
+  local files=(${(ps:\0:)"$(locate -Ai -0 ${@:-HOME} | grep -z -vE '~$' | fzf --print0 --read0 -0 -1 -m)"})
+  if [[ -n $files ]] then
+     vim -- $files
+  fi
+}
+
+C() {
+  local file="$(locate -Ai -0 ${@:-$HOME} | grep -z -vE '~$' | fzf --read0 -0 -1)"
+  if [[ -n $file ]] then
+     if [[ -d $file ]] then
+        cd -- $file
+     else
+        cd -- ${file:h}
+     fi
+  fi
+}
+
+f() {
+  local files=(${(ps:\0:)"$(fzf --multi --print0 --query="$1" --select-1 --exit-0)"})
+  [[ -n "$files" ]] && ${EDITOR:-vim} $files
+}
+
+c() {
+  local dir=$(find ${1:-.} -path '*/.*' -prune -o -type d -print 2> /dev/null | fzf +m) && cd $dir
+}
+
+ca() {
+  local dir=$(find ${1:-.} -type d 2> /dev/null | fzf +m) && cd "$dir"
+}
+
+x() {
+  local file=(${(ps:\0:)"$(fzf --print0 --query="$1" --select-1 --exit-0)"})
+  [[ -n "$file" ]] && xdg-open $file
+}

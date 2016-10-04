@@ -30,7 +30,7 @@ zplug "zsh-users/zaw", nice:9
 zplug "gusaiani/elixir-oh-my-zsh"
 
 # A next-generation cd command with an interactive filter
-zplug "b4b4r07/enhancd", use:init.sh
+# zplug "b4b4r07/enhancd", use:init.sh
 
 # Little script to create, navigate and delete bookmarks in Bash and Zsh, using the fuzzy finder fzf
 zplug "urbainvaes/fzf-marks"
@@ -136,3 +136,4 @@ source "$myZsh/gnupg"
 source "$myZsh/functions"
 source "$myZsh/aliases"
 source "$myZsh/grml"
+source "$myZsh/fzf"
