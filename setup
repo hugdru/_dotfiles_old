@@ -164,7 +164,7 @@ setUpSymbolicLinks() (
   do
     dir=$HOME/${file%/*}
     if [[ -d $dir ]] then
-      mkdir -p $HOME/${file%/*}
+      mkdir -p $dir
     fi
     ln -f -s $1/$file $HOME/$file
   done
