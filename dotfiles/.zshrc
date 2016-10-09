@@ -1,9 +1,14 @@
+zplug_dir="$HOME/.zplug/repos/zplug/zplug"
+
 if [[ ! -d ~/.zplug ]] then
-    git clone https://github.com/zplug/zplug ~/.zplug
-    source ~/.zplug/init.zsh && zplug update --self
+    git clone https://github.com/zplug/zplug $zplug_dir
+    source $zplug_dir/init.zsh && zplug update --self
 fi
 
-source ~/.zplug/init.zsh
+source $zplug_dir/init.zsh
+
+# A next-generation plugin manager for zsh
+zplug "zplug/zplug"
 
 # Fish shell like syntax highlighting for Zsh
 zplug "zsh-users/zsh-syntax-highlighting", nice:19

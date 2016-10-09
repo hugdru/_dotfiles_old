@@ -169,6 +169,7 @@ man-db
 man-pages
 maven
 mdadm
+memconf
 mesa
 mesa-demos
 mesa-libgl

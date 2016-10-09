@@ -21,6 +21,7 @@ pycrypto
 pydocstyle
 pyflakes
 pylama
+pyparsing
 SecretStorage
 udiskie
 vulture

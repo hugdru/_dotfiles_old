@@ -123,3 +123,14 @@ function addToPath() {
     return 1
   fi
 }
+
+function updatePackages() {
+  pacaur -Syyu
+  npm -g update
+  pip freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs pip install --user --upgrade
+  gem update
+  composer global update
+  zplug update
+  nvim -c ':PlugUpdate | :qa'
+  $HOME/.config/nvim/plugged/YouCompleteMe/install.py --all
+}
