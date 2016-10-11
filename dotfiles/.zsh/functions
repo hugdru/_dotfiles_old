@@ -132,5 +132,13 @@ function updatePackages() {
   composer global update
   zplug update
   nvim -c ':PlugUpdate | :qa'
+  nix-env -u --keep-going --leq
+}
+
+function cleanGarbage() {
+  nix-collect-garbage -d
+}
+
+function buildYcm() {
   $HOME/.config/nvim/plugged/YouCompleteMe/install.py --all
 }

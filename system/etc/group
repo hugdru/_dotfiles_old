@@ -63,4 +63,4 @@ wireshark:x:150:hugdru
 adbusers:x:990:
 brlapi:x:989:
 ceph:x:988:
-docker:x:987:
+docker:x:987:hugdru
