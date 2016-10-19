@@ -26,11 +26,11 @@ f() {
 }
 
 c() {
-  local dir=$(find ${1:-.} -path '*/.*' -prune -o -type d -print 2> /dev/null | fzf +m) && cd $dir
+  local dir=$(find "${@:-.}" -path '*/.*' -prune -o -type d -print 2> /dev/null | fzf +m) && cd $dir
 }
 
 ca() {
-  local dir=$(find ${1:-.} -type d 2> /dev/null | fzf +m) && cd "$dir"
+  local dir=$(find "${@:-.}" -type d 2> /dev/null | fzf +m) && cd "$dir"
 }
 
 x() {

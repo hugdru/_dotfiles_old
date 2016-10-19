@@ -132,6 +132,7 @@ java-openjfx-doc
 jdk8-openjdk
 jfsutils
 jpegoptim
+jq
 jre8-openjdk
 jre8-openjdk-headless
 jshon
@@ -157,10 +158,10 @@ licenses
 linux
 linux-lts
 linux-lts-headers
-livestreamer
 lldb
 logrotate
 lshw
+lsof
 lvm2
 lxappearance
 m4
@@ -176,6 +177,8 @@ mesa-libgl
 mesa-vdpau
 mlocate
 modemmanager
+mongodb
+mongodb-tools
 mono
 mono-basic
 monodevelop
@@ -193,6 +196,7 @@ networkmanager-openconnect
 networkmanager-openvpn
 networkmanager-pptp
 networkmanager-vpnc
+nginx
 npm
 ntfs-3g
 numix-themes
@@ -214,6 +218,7 @@ oxygen-icons
 p7zip
 pacman
 pam_mount
+pandoc
 parted
 patch
 pavucontrol
@@ -355,6 +360,8 @@ vim-spell-pt
 virt-manager
 virtualbox
 virtualbox-guest-iso
+virtualbox-guest-modules-arch
+virtualbox-guest-utils
 virtualbox-host-modules-arch
 vlc
 volumeicon

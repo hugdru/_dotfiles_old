@@ -23,6 +23,9 @@ pyflakes
 pylama
 pyparsing
 SecretStorage
+setuptools
+streamlink
+texttable
 udiskie
 vulture
 webencodings

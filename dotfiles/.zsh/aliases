@@ -8,12 +8,12 @@ alias ofc="openFileContents"
 alias vimrc="vim $HOME/.config/nvim/init.vim"
 alias v="$EDITOR"
 
-function cdcol {
-  findMe "$HOME/data/collegeMIEIC" "$@"
+function leg {
+  c "$HOME/data/college"*
 }
 
-function proj {
-  findMe "$HOME/data/projetos/" "$@"
+function pro {
+  c "$HOME/data/projetos"
 }
 
 alias ls='ls --color=auto'

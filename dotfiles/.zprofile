@@ -4,6 +4,13 @@ pip_folder="$HOME/.local/bin"
 ## npm
 npm_folder="$(npm config get prefix)/bin"
 ##
+## yarn
+yarn_folder="$HOME/.yarn-packages"
+yarn_bin="$yarn_folder/bin"
+mkdir -p "$yarn_bin"
+export PREFIX="$yarn_folder"
+export YARN_PREFIX="$yarn_folder"
+##
 ## composer
 export COMPOSER_HOME="$HOME/.config/composer"
 composer_folder="$COMPOSER_HOME/vendor/bin"
@@ -22,7 +29,7 @@ colorgcc_folder='/usr/lib/colorgcc/bin/'
 export GOPATH="$HOME/data/golang"
 ##
 
-export PATH="$HOME/data/bin:$pip_folder:$npm_folder:$composer_folder:$sicstus_folder:$ruby_folder:$colorgcc_folder:$GOPATH/bin:$PATH"
+export PATH="$HOME/data/bin:$pip_folder:$yarn_bin:$npm_folder:$composer_folder:$sicstus_folder:$ruby_folder:$colorgcc_folder:$GOPATH/bin:$PATH"
 
 export CCACHE_PATH='/usr/bin'
 export CCACHE_DIR='/tmp/ccache'
@@ -32,7 +39,7 @@ export LESSOPEN="| $(which highlight) %s --out-format xterm256 --line-numbers --
 export EDITOR=nvim
 export BROWSER=chromium
 export _JAVA_AWT_WM_NONREPARENTING=1
-export SWT_GTK3=0
+# export SWT_GTK3=0
 
 export CHROMIUM_USER_FLAGS="$(cat "$HOME/.config/chromium-flags.conf" | tr '\n' ' ')"
 

@@ -93,6 +93,9 @@ call plug#begin('~/.config/nvim/plugged')
   " A tree explorer plugin for vim
   Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 
+  " Vim syntax file & snippets for Docker's Dockerfile
+  Plug 'ekalinin/Dockerfile.vim'
+
   " A better JSON for Vim
   Plug 'elzr/vim-json', {'for': 'json'}
 
