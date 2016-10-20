@@ -27,7 +27,7 @@ Installs some beautiful fonts
 
 ## I use ##
 #### keymap ####
-I use two layouts, Option "XkbLayout" "pt,gb". I only use pt for chatting, everything else I do with gb. Meaning, all shortcuts are configured with gb in mind. Coding and using vim with an english layout is much better :)
+I use two layouts, Option "XkbLayout" "gb,pt". I only use pt for chatting, everything else I do with gb. Meaning, all shortcuts are configured with gb in mind. Coding and using vim with an english layout is much better :)
 
 #### distro ####
 https://www.archlinux.org/
