@@ -158,3 +158,6 @@ source "$myZsh/functions"
 source "$myZsh/aliases"
 source "$myZsh/grml"
 source "$myZsh/fzf"
+
+# Because robbyrussell/oh-my-zsh/lib/misc.zsh overrides the one in .zprofile
+export LESS=' -x4RFsXmgiJ '
