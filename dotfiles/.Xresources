@@ -81,10 +81,10 @@ URxvt.keysym.Shift-Control-V: perl:clipboard:paste
 ! Real transparency must have compositing: compton, xcompmgr, etc.
 ! Number of bits used to represent the color of each pixel, 32 <- 8 * (3+1) for each component RGB and for alpha transparency bits
 URxvt.depth: 32
-URxvt.font: xft:Source code Pro For Powerline:size=14:antialias=true:hinting=true:style=Medium
-URxvt.boldFont: xft:Source code Pro For Powerline:size=14:antialias=true:hinting=true:style=Medium
-URxvt.italicFont: xft:Source code Pro For Powerline:size=14:antialias=true:hinting=true:style=Medium
-URxvt.boldItalicFont: xft:Source Code Pro For Powerline:size=14:antialias=true:hinting=true:style=Medium
+URxvt.font: xft:DejaVuSansMonoForPowerline Nerd Font:size=14:style=Book
+URxvt.boldFont: xft:DejaVuSansMonoForPowerline Nerd Font:size=14:style=Bold
+URxvt.italicFont: xft:DejaVuSansMonoForPowerline Nerd Font:size=14:style=Oblique
+URxvt.boldItalicFont: xft:DejaVuSansMonoForPowerline Nerd Font:size=14:style=Bold Oblique
 
 ! Change this value for the symbols to appear, might break because of font size
 URxvt.letterSpace: 0

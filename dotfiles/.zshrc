@@ -1,4 +1,4 @@
-zplug_dir="$HOME/.zplug/repos/zplug/zplug"
+local zplug_dir="$HOME/.zplug/repos/zplug/zplug"
 
 if [[ ! -d ~/.zplug ]] then
     git clone https://github.com/zplug/zplug $zplug_dir
@@ -58,13 +58,12 @@ zplug "plugins/man", from:oh-my-zsh
 zplug "plugins/pip", from:oh-my-zsh
 zplug "plugins/vi-mode", from:oh-my-zsh
 zplug "plugins/golang", from:oh-my-zsh
-# zplug 'themes/sorin', from:oh-my-zsh
-# zplug "arialdomartini/oh-my-git", use:"*.sh"
-# zplug "arialdomartini/oh-my-git-themes", use:"oppa-lana-style.zsh-theme"
 
 # Theme
-zplug "mafredri/zsh-async", nice:-2
-zplug "sindresorhus/pure"
+zplug 'themes/sorin', from:oh-my-zsh
+# zplug "mafredri/zsh-async", nice:-2
+# zplug "sindresorhus/pure"
+# zplug "molovo/filthy"
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
@@ -93,7 +92,7 @@ bindkey '^ ' autosuggest-accept
 ##
 
 ## zsh-syntax-highlighting
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 ##
 
 ## zsh-history-substring-search

@@ -14,7 +14,7 @@ gem='gem.txt'
 npm='npm.txt'
 
 main() (
-  if [[ $# -ne 1 || ($1 != 'save' && $1 != 'install' && $1 != 'links') ]] then
+  if [[ $# -ne 1 || ($1 != 'save' && $1 != 'install' && $1 != 'links' && $1 != 'fonts') ]] then
     1>&2 echo "$0 (save|install|links)"
   fi
   $1
@@ -116,32 +116,50 @@ install() (
   # missing pcmanfm settings
   # missing qbittorrent settings
   # missing elixir vim
+  ##########   End of 4   ##########
 
   ########## 5 - nvim configuration ##########
   curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   nvim -c ':PlugUpdate | :qa'
   $HOME/.config/nvim/plugged/YouCompleteMe/install.py --all
-  ##########        End of 4        ##########
+  ##########        End of 5        ##########
 
   ########## 6 - zsh setup ##########
   curl -sL https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
-  ##########   End of 5    ##########
+  ##########   End of 6    ##########
+  #
+  ##########   7 - fonts   ##########
+  fonts
+  ##########   End of 7    ##########
+)
 
-  ########## 8 - awesome-terminal-fonts ##########
+fonts() (
+
+  fonts_dir="$HOME/.local/share/fonts/"
+  rm -rf "$fonts_dir"
+  mkdir -p "$fonts_dir"
+
   tmp_dir="/tmp/awesome-terminal-fonts-$$"
   git clone https://github.com/gabrielelana/awesome-terminal-fonts.git $tmp_dir
-  fonts_dir="$HOME/.local/share/fonts/"
-  mkdir -p $fonts_dir
   cp $tmp_dir/build/*.ttf $fonts_dir
   rm -rf $tmp_dir
-  ##########          End of 8          ##########
 
-  ########## 9 - nerd-fonts ##########
-  cd ~/.local/share/fonts
-  wget 'https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/AnonymousPro/complete/Anonymice%20Powerline%20Nerd%20Font%20Complete%20Mono.ttf'
-  fc-cache -fv ~/.local/share/fonts
-  ##########    Enf of 9    ##########
+  cd "$fonts_dir"
+  curl -fLo "Sauce Code Pro Black Nerd Font Complete Mono.ttf" 'https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SourceCodePro/Black/complete/Sauce%20Code%20Pro%20Black%20Nerd%20Font%20Complete%20Mono.ttf'
+  curl -fLo "Sauce Code Pro Bold Nerd Font Complete Mono.ttf" 'https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SourceCodePro/Bold/complete/Sauce%20Code%20Pro%20Bold%20Nerd%20Font%20Complete%20Mono.ttf'
+  curl -fLo "Sauce Code Pro ExtraLight Nerd Font Complete Mono.ttf" 'https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SourceCodePro/Extra-Light/complete/Sauce%20Code%20Pro%20ExtraLight%20Nerd%20Font%20Complete%20Mono.ttf'
+  curl -fLo "Sauce Code Pro Light Nerd Font Complete Mono.ttf" 'https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SourceCodePro/Light/complete/Sauce%20Code%20Pro%20Light%20Nerd%20Font%20Complete%20Mono.ttf'
+  curl -fLo "Sauce Code Pro Medium Nerd Font Complete Mono.ttf" 'https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SourceCodePro/Medium/complete/Sauce%20Code%20Pro%20Medium%20Nerd%20Font%20Complete%20Mono.ttf'
+  curl -fLo "Sauce Code Pro Nerd Font Complete Mono.ttf" 'https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SourceCodePro/Regular/complete/Sauce%20Code%20Pro%20Nerd%20Font%20Complete%20Mono.ttf'
+  curl -fLo "Sauce Code Pro Semibold Nerd Font Complete Mono.ttf" 'https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SourceCodePro/Semibold/complete/Sauce%20Code%20Pro%20Semibold%20Nerd%20Font%20Complete%20Mono.ttf'
+
+  curl -fLo "DejaVu Sans Mono Bold Oblique for Powerline Nerd Font Complete Mono.ttf" 'https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/DejaVuSansMono/Bold-Italic/complete/DejaVu%20Sans%20Mono%20Bold%20Oblique%20for%20Powerline%20Nerd%20Font%20Complete%20Mono.ttf'
+  curl -fLo "DejaVu Sans Mono Bold for Powerline Nerd Font Complete Mono.ttf" 'https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/DejaVuSansMono/Bold/complete/DejaVu%20Sans%20Mono%20Bold%20for%20Powerline%20Nerd%20Font%20Complete%20Mono.ttf'
+  curl -fLo "DejaVu Sans Mono Oblique for Powerline Nerd Font Complete Mono.ttf" 'https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/DejaVuSansMono/Italic/complete/DejaVu%20Sans%20Mono%20Oblique%20for%20Powerline%20Nerd%20Font%20Complete%20Mono.ttf'
+  curl -fLo "DejaVu Sans Mono for Powerline Nerd Font Complete Mono.ttf" 'https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/DejaVuSansMono/Regular/complete/DejaVu%20Sans%20Mono%20for%20Powerline%20Nerd%20Font%20Complete%20Mono.ttf'
+
+  fc-cache -fv "$fonts_dir"
 )
 
 links() (

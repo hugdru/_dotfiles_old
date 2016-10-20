@@ -22,6 +22,8 @@ Saves all the system files to the system folder and info about installed softwar
 Not tested since I don't use it, I normally restore my home from the borg backup.
 But should create an user if needed, get private stuff from a backup, clone the repo, set up the links,
 install the apps, load nvim pluggins and compile what is needed, install fonts, etc. I'll test it eventually.
+#### ./setup fonts ####
+Installs some beautiful fonts
 
 ## I use ##
 #### keymap ####
@@ -54,7 +56,7 @@ https://awesome.naquadah.org/ - My configuration is pretty simple I don't like t
   * Cheeky for easy application jump, shortcut: modkey /
   * Revelation for exposé, shortcut: modkey i
   * Added support for loading programs on boot from $HOME/.autostart with custom rules.
-  * Move the tags creation up and created a table with mapping inverted, tag["name"]->index for easy reference in the programs table. 
+  * Move the tags creation up and created a table with mapping inverted, tag["name"]->index for easy reference in the programs table.
   * Created a table of programs with custom rules and shortcuts for easy configuration.
   * Run or raise to jump to program with shortcut if it is already running.
   * I changed some other shortcuts but I no longer remember which ones exactly.
