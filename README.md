@@ -83,3 +83,16 @@ For EFI add the ESP partition and change the partitioning scheme.
 I changed the default user-dirs environment variables because I keep all important files like projects, pictures, and so on on a separate partition. Namely the data partition. I do this so I can mount it easily on windows, other distros, etc without carrying distro specific configurations, temp files, etc. <br>
 Check https://github.com/hugdru/dotfiles/blob/master/dotfiles/.config/user-dirs.dirs
 
+## Screenshots ##
+![awesome5](https://github.com/hugdru/dotfiles/blob/master/screenshots/awesome5.png) <br>
+![awesome4](https://github.com/hugdru/dotfiles/blob/master/screenshots/awesome4.png) <br>
+![awesome3](https://github.com/hugdru/dotfiles/blob/master/screenshots/awesome3.png) <br>
+![awesome2](https://github.com/hugdru/dotfiles/blob/master/screenshots/awesome2.png) <br>
+![Awesome1](https://github.com/hugdru/dotfiles/blob/master/screenshots/awesome1.png) <br>
+![weechat](https://github.com/hugdru/dotfiles/blob/master/screenshots/weechat.png) <br>
+![neovim](https://github.com/hugdru/dotfiles/blob/master/screenshots/neovim.png) <br>
+![weechat](https://github.com/hugdru/dotfiles/blob/master/screenshots/weechat.png) <br>
+
+
+
+
