@@ -314,11 +314,6 @@ vicious
 vifm
 vim-spell-pt
 virt-manager
-virtualbox
-virtualbox-guest-iso
-virtualbox-guest-modules-arch
-virtualbox-guest-utils
-virtualbox-host-modules-arch
 vlc
 volumeicon
 vulkan-intel
