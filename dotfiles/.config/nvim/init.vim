@@ -79,7 +79,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'haya14busa/incsearch.vim'
 
   " Preview colours in source code while editing
-  Plug 'ap/vim-css-color', {'for': ['css', 'html', 'javascript', 'json', 'less', 'python', 'sass', 'scss', 'stylus', 'vim', 'xdefaults', 'yaml']}
+  " Plug 'ap/vim-css-color', {'for': ['css', 'html', 'javascript', 'json', 'less', 'python', 'sass', 'scss', 'stylus', 'vim', 'xdefaults', 'yaml']}
 
   " A Git wrapper so awesome, it should be illegal
   Plug 'tpope/vim-fugitive'

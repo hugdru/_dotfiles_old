@@ -1,12 +1,13 @@
-angular-cli
-autoprefixer
 brunch
 csslint
 eslint
 htmlhint
 jsonlint
 markdown-pdf
+ng
 node-sass
 stylelint
-typescript
+tsc
+tsserver
 yarn
+yarnpkg

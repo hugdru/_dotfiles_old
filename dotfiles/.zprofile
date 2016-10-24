@@ -1,9 +1,6 @@
 ## pip
 pip_folder="$HOME/.local/bin"
 ##
-## npm
-npm_folder="$(npm config get prefix)/bin"
-##
 ## yarn
 yarn_folder="$HOME/.yarn-packages"
 yarn_bin="$yarn_folder/bin"
@@ -29,7 +26,7 @@ colorgcc_folder='/usr/lib/colorgcc/bin/'
 export GOPATH="$HOME/data/golang"
 ##
 
-export PATH="$HOME/data/bin:$pip_folder:$yarn_bin:$npm_folder:$composer_folder:$sicstus_folder:$ruby_folder:$colorgcc_folder:$GOPATH/bin:$PATH"
+export PATH="$HOME/data/bin:$pip_folder:$yarn_bin:$composer_folder:$sicstus_folder:$ruby_folder:$colorgcc_folder:$GOPATH/bin:$PATH"
 
 export CCACHE_PATH='/usr/bin'
 export CCACHE_DIR='/tmp/ccache'

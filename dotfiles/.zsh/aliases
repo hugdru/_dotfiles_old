@@ -2,7 +2,8 @@
 
 alias vi="vim"
 alias vim="nvim"
-alias vimdiff="vim -d"
+alias vimdiff="nvim -d"
+alias nvimdiff="nvim -d"
 alias o="open"
 alias ofc="openFileContents"
 alias vimrc="vim $HOME/.config/nvim/init.vim"

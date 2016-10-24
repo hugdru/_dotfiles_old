@@ -126,7 +126,7 @@ function addToPath() {
 
 function updatePackages() {
   pacaur -Syyu
-  npm -g update
+  # npm -g update
   pip freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs pip install --user --upgrade
   gem update
   composer global update

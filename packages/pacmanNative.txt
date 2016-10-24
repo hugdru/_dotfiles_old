@@ -7,6 +7,7 @@ android-tools
 android-udev
 aspell
 aspell-en
+atop
 autoconf
 automake
 awesome
@@ -227,6 +228,7 @@ procps-ng
 psmisc
 pulseaudio
 pulseaudio-alsa
+pv
 python-neovim
 python-pip
 python2-discid

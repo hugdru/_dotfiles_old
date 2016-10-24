@@ -61,7 +61,7 @@ zplug "plugins/golang", from:oh-my-zsh
 
 # Theme
 zplug 'themes/sorin', from:oh-my-zsh
-# zplug "mafredri/zsh-async", nice:-2
+zplug "mafredri/zsh-async", nice:-2
 # zplug "sindresorhus/pure"
 # zplug "molovo/filthy"
 

@@ -3,7 +3,7 @@ xbindkeys &
 nm-applet &
 xscreensaver -no-splash &
 xss-lock -- xscreensaver-command -lock &
-compton --backend glx --paint-on-overlay --vsync opengl-swc &
+compton --xrender-sync-fence --xrender-sync --backend glx --vsync opengl-swc -b
 volumeicon &
 cbatticon &
 chromium & #chromium,web,class
