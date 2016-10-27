@@ -257,7 +257,8 @@ programs = {
   },
   browserChromium = {
       name = "chromium",
-      windowProperties = { class = "chromium" },
+      windowProperties = { class = {"chromium", "Chromium"} },
+      ruleType = "rule_any",
       rulesProperties = { tag = tags[1][byTagName.web], switchtotag = true },
       keybinding = { key = "s" },
       isRunOrRaise = true

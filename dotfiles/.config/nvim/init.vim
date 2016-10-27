@@ -84,6 +84,9 @@ call plug#begin('~/.config/nvim/plugged')
   " A Git wrapper so awesome, it should be illegal
   Plug 'tpope/vim-fugitive'
 
+  " Provides database access to many dbms (Oracle, Sybase, Microsoft, MySQL, DBI,..)
+  Plug 'vim-scripts/dbext.vim'
+
   " Vim Git runtime files
   Plug 'tpope/vim-git'
 

@@ -58,9 +58,12 @@ zplug "plugins/man", from:oh-my-zsh
 zplug "plugins/pip", from:oh-my-zsh
 zplug "plugins/vi-mode", from:oh-my-zsh
 zplug "plugins/golang", from:oh-my-zsh
+zplug "plugins/sudo", from:oh-my-zsh
+zplug "plugins/gb", from:oh-my-zsh
 
 # Theme
-zplug 'themes/sorin', from:oh-my-zsh
+zplug 'themes/blinks', from:oh-my-zsh
+# zplug 'themes/sorin', from:oh-my-zsh
 zplug "mafredri/zsh-async", nice:-2
 # zplug "sindresorhus/pure"
 # zplug "molovo/filthy"

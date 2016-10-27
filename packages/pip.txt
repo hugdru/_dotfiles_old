@@ -2,6 +2,7 @@ beautifulsoup4
 cffi
 coursera-dl
 cryptography
+Cython
 docker-compose
 docker-py
 docker-pycreds
@@ -27,6 +28,7 @@ setuptools
 streamlink
 texttable
 udiskie
+urllib3
 vulture
 webencodings
 youtube-dl
