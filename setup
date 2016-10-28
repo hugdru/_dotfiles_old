@@ -30,7 +30,7 @@ save () (
   pip list --user | awk '{print $1}' > $app_dir/$pip
   composer global show --direct | awk '{print $1}' > $app_dir/$composer
   gem list --local --no-details --no-versions -q > $app_dir/$gem
-  ls "$PREFIX/bin" > $app_dir/$npm
+  ls "$(npm root -g)" > $app_dir/$npm
 
   sysFiles=(
     '/etc/default/tlp'
@@ -106,8 +106,7 @@ install() (
   # Pip
   pip install --user $(<$app_dir/$pip)
   # npm
-  npm install -g yarn
-  yarn global add $(<$app_dir/$npm)
+  npm install -g $(<$app_dir/$npm)
   # gem
   gem install $(<$app_dir/$gem)
 

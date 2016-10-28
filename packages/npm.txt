@@ -1,13 +1,11 @@
+angular-cli
 brunch
 csslint
 eslint
 htmlhint
 jsonlint
 markdown-pdf
-ng
 node-sass
 stylelint
-tsc
-tsserver
+typescript
 yarn
-yarnpkg
