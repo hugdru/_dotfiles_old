@@ -43,6 +43,9 @@ zplug "urbainvaes/fzf-marks"
 # This is a repository of themes for GNU ls (configured via GNU dircolors) that support Ethan Schoonover’s Solarized color scheme
 zplug "seebi/dircolors-solarized"
 
+# A modified version of oh-my-zsh's plugin colored-man-pages, optimized for solarized dark theme in terminal
+zplug "zlsun/solarized-man"
+
 # oh-my-zsh stuff
 zplug "robbyrussell/oh-my-zsh", use:"lib/*.zsh", nice:-1
 zplug "plugins/git", from:oh-my-zsh
@@ -62,9 +65,10 @@ zplug "plugins/sudo", from:oh-my-zsh
 zplug "plugins/gb", from:oh-my-zsh
 
 # Theme
-zplug 'themes/blinks', from:oh-my-zsh
-# zplug 'themes/sorin', from:oh-my-zsh
-zplug "mafredri/zsh-async", nice:-2
+# zplug "aranasaurus/zemm-blinks.zsh-theme"
+zplug "themes/blinks", from:oh-my-zsh
+# zplug "themes/sorin", from:oh-my-zsh
+# zplug "mafredri/zsh-async", nice:-2
 # zplug "sindresorhus/pure"
 # zplug "molovo/filthy"
 
@@ -79,7 +83,7 @@ fi
 zplug load --verbose
 
 ## enhancd
-export ENHANCD_COMMAND="c"
+# export ENHANCD_COMMAND="c"
 ##
 
 ## alias-tips

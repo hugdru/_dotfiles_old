@@ -139,6 +139,10 @@ function cleanGarbage() {
   nix-collect-garbage -d
 }
 
+function updateMirrorlist() {
+  sudo reflector --verbose --latest 20 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
+}
+
 function buildYcm() {
   $HOME/.config/nvim/plugged/YouCompleteMe/install.py --all
 }

@@ -241,13 +241,20 @@ programs = {
       name = "pcmanfm",
       keybinding = { key = "a" }
   },
-  music = {
-      name = terminal .. " -name ncmpcpp -e ncmpcpp",
-      windowProperties = { instance = "ncmpcpp" },
-      rulesProperties = { tag = tags[1][byTagName.misc], switchtotag = true },
+  radio = {
+      name = "gradio",
+      windowProperties = { class = "Gradio" },
+      rulesProperties = { tag = tags[1][byTagName.news], switchtotag = true },
       keybinding = { extraModKey = "Shift", key = "a" },
       isRunOrRaise = true
   },
+  -- music = {
+  --     name = terminal .. " -name ncmpcpp -e ncmpcpp",
+  --     windowProperties = { instance = "ncmpcpp" },
+  --     rulesProperties = { tag = tags[1][byTagName.misc], switchtotag = true },
+  --     keybinding = { extraModKey = "Shift", key = "a" },
+  --     isRunOrRaise = true
+  -- },
   video = {
       name = "vlc",
       windowProperties = { class = "Vlc" },
