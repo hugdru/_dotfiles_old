@@ -117,6 +117,16 @@ bindkey -M emacs '^P' history-substring-search-up
 bindkey -M emacs '^N' history-substring-search-down
 ##
 
+## plugin/sudo
+# Alt + s
+bindkey "^[s" sudo-command-line
+##
+
+## vim command mode mapping ##
+# Alt + a
+bindkey -M viins '^[a' vi-cmd-mode
+##
+
 ## dircolors-solarized
 eval $(dircolors "$ZPLUG_HOME/repos/seebi/dircolors-solarized/dircolors.ansi-dark")
 ##
@@ -154,9 +164,9 @@ setopt hist_ignore_all_dups
 setopt hist_ignore_space
 setopt hist_find_no_dups
 setopt hist_reduce_blanks
-setopt share_history
+setopt no_share_history
+setopt no_inc_append_history
 setopt append_history
-setopt inc_append_history
 setopt extended_history
 ##
 
