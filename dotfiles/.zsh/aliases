@@ -4,18 +4,16 @@ alias vi="vim"
 alias vim="nvim"
 alias vimdiff="nvim -d"
 alias nvimdiff="nvim -d"
+alias e="$EDITOR"
+
 alias o="open"
 alias ofc="openFileContents"
+alias u="urxvt > /dev/null 2>&1 &"
+alias td="cd $TMPDIR/tmpDownloads && ls"
+
 alias vimrc="vim $HOME/.config/nvim/init.vim"
-alias v="$EDITOR"
-
-function leg {
-  c "$HOME/data/college"*
-}
-
-function pro {
-  c "$HOME/data/projetos"
-}
+alias awesomrc="vim $HOME/.config/awesome/rc.lua"
+alias zshrc="vim $HOME/.zshrc"
 
 alias ls='ls --color=auto'
 alias dir='dir --color=auto'
@@ -24,4 +22,31 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
+function eg {
+  rcd "$HOME/data/college"*
+}
+
+function so {
+  rcd "$HOME/data/projetos"
+}
+
+alias v="fvi"
+alias c="fcd"
+alias ac="facd"
+alias f="fop"
+
+alias V="lvi"
+alias C="lcd"
+alias F="lop"
+
+alias rv="rvi"
+alias rc="rcd"
+alias rca="rcda"
+alias rf="rop"
+
 unalias gb
+
+# Check for aliases
+# oh-my-zsh/lib/directories.zsh
+# oh-my-zsh/lib/misc.zsh
+# oh-my-zsh/plugins

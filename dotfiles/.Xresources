@@ -96,6 +96,9 @@ URxvt.colorIT: #87af5f
 URxvt.colorBD: #d7d7d7
 URxvt.colorUL: #87afd7
 
+! C-Tab maps to F12 so I can use it in vim
+URxvt.keysym.C-Tab:  \033[24~
+
 ! From https://github.com/altercation/solarized/blob/master/xresources/solarized
 
 ! Common

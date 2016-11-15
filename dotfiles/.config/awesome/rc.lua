@@ -195,7 +195,7 @@ programs = {
   },
   editorIdea = {
       name = "idea",
-      windowProperties = { class = {"jetbrains-idea-ce", "jetbrains-idea"} },
+      windowProperties = { class = {"jetbrains-idea-ce", "jetbrains-idea", "jetbrains-webstorm", "jetbrains-studio"} },
       ruleType = "rule_any",
       rulesProperties = { tag = tags[1][byTagName.dev] },
       keybinding = { key = "e" },
@@ -255,9 +255,16 @@ programs = {
   --     keybinding = { extraModKey = "Shift", key = "a" },
   --     isRunOrRaise = true
   -- },
+  -- video = {
+  --     name = "vlc",
+  --     windowProperties = { class = "Vlc" },
+  --     -- rulesProperties = { tag = tags[1][byTagName.misc], switchtotag = true },
+  --     keybinding = { extraModKey = "Control", key = "a" },
+  --     isRunOrRaise = true
+  -- },
   video = {
       name = "vlc",
-      windowProperties = { class = "Vlc" },
+      windowProperties = { class = "smplayer" },
       -- rulesProperties = { tag = tags[1][byTagName.misc], switchtotag = true },
       keybinding = { extraModKey = "Control", key = "a" },
       isRunOrRaise = true
@@ -485,12 +492,12 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "backslash", awful.tag.history.restore),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
-    awful.key({ modkey,           }, "k",
+    awful.key({ modkey,           }, "j",
         function ()
             awful.client.focus.byidx( 1)
             if client.focus then client.focus:raise() end
         end),
-    awful.key({ modkey,           }, "j",
+    awful.key({ modkey,           }, "k",
         function ()
             awful.client.focus.byidx(-1)
             if client.focus then client.focus:raise() end

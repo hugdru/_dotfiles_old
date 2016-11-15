@@ -1,62 +1,12 @@
 #!/usr/bin/env zsh
 
-function findMe() {
-
-  local mainPath regex index selectedPath selectedPaths=() selectedPathsCardinality indexChoice
-
-  if [[ $# -lt 2 ]]; then
-    echo "usage: $0 mainPath folder1 folder2 folderN" 1>&2
-    return
-  fi
-
-  mainPath="$1"
-  if ! [[ -d "$mainPath" ]]; then
-    echo "That is not a valid path" 1>&2
-    return
-  fi
-  shift
-
-  regex=".*"
-  while test $# -gt 1; do
-    regex="${regex}/.*${1}.*/"
-    shift
-  done
-  regex="${regex}.*$1[^/]*"
-
-  index=1
-  while IFS= read -r -d $'\0' selectedPath; do
-    selectedPaths[$((index++))]="$selectedPath"
-  done < <(find "$mainPath" -type d -regextype posix-extended -iregex "$regex" -printf "%P\0")
-
-  selectedPathsCardinality="${#selectedPaths}"
-  if [[ "$selectedPathsCardinality" -eq 0 ]]; then
-    return
-  fi
-
-  indexChoice=1
-  if [[ "$selectedPathsCardinality" -ne 1 ]]; then
-    index=1
-    for selectedPath in "${selectedPaths[@]}"; do
-      echo "$((index++)): $selectedPath"
-    done
-
-    read indexChoice
-    if ! [[ "$indexChoice" =~ ^[0-9]+$ && "$indexChoice" -gt 0 && "$indexChoice" -lt "$index" ]]; then
-      echo 'Choose a valid option' 1>&2
-      return
-    fi
-  fi
-
-  cd "${mainPath}/${selectedPaths[$indexChoice]}"
-}
-
 function mkc() {
   if [[ $# -ne 1 ]] then
     1>&2 echo "$0: directory"
     return 1
   fi
-  mkdir -p "$1"
-  cd "$1"
+  mkdir -p $1
+  cd $1
 }
 
 function mkm() {
@@ -82,8 +32,8 @@ function mkmo() {
 }
 
 function cdl() {
-  if [[ -d "$1" ]] then
-    cd "$1"
+  if [[ -d $1 ]] then
+    cd $1
     ls
   else
     echo "$0: Directory not found" 1>&2
@@ -94,30 +44,30 @@ function cdl() {
 function apnm() {
   local cardinality bin_folder
 
-  cardinality="$#"
+  cardinality=$#
 
-  if [[ "$cardinality" -eq 0 ]] then
+  if [[ $cardinality -eq 0 ]] then
     bin_folder="$(pwd)/node_modules/.bin"
     addToPath "$bin_folder"
-  elif [[ "$cardinality" -eq 1 ]] then
-    if [[ "${1:0:1}" = '/' ]] then
-      bin_folder="${1}/.bin"
-      addToPath "$bin_folder"
+  elif [[ $cardinality -eq 1 ]] then
+    if [[ ${1:0:1} = '/' ]] then
+      bin_folder=${1}/.bin
+      addToPath $bin_folder
     else
-      bin_folder="$(pwd)/${1}/.bin"
-      addToPath "$bin_folder"
+      bin_folder=$(pwd)/${1}/.bin
+      addToPath $bin_folder
     fi
   fi
 }
 
 function addToPath() {
-  if [[ "$#" -ne 1 || "${1:0:1}" != '/' ]] then
+  if [[ $# -ne 1 || ${1:0:1} != '/' ]] then
     echo "$0 /absolute/path" 2>&1
     return 1
   fi
 
-  if [[ -d "$1" ]] then
-    export PATH="$1:$PATH"
+  if [[ -d $1 ]] then
+    export PATH=$1:$PATH
   else
     echo "$1 does not exist or is not a folder" 2>&1
     return 1

@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 
 if [[ $# -eq 0 ]]; then
-  xdg-open . > /dev/null 2>&1 &
+  if ! which pcmanfm > /dev/null; then
+    xdg-open . > /dev/null 2>&1 &
+  else
+    pcmanfm > /dev/null 2>&1 &
+  fi
 else
   xdg-open "$@" > /dev/null 2>&1 &
 fi

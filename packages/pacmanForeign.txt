@@ -1,5 +1,6 @@
 artha
 google-chrome
+gradio-bin
 hunspell-pt_pt
 hunspell-pt_pt-preao
 hyphen-pt_pt

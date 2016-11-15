@@ -178,13 +178,14 @@ setUpSymbolicLinks() (
     return
   fi
 
-  find $1 -type f -printf '%P\0' | while read -d $'\0' file
+  find $1 \( -type f -o -type l \) -printf '%P\0' | while read -d $'\0' file
   do
     dir=$HOME/${file%/*}
     if [[ -d $dir ]] then
       mkdir -p $dir
     fi
-    ln -f -s $1/$file $HOME/$file
+    echo "$(readlink -f "$1/$file")" $HOME/$file
+    ln -f -s "$(readlink -f "$1/$file")" $HOME/$file
   done
 )
 

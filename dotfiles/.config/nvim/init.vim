@@ -390,6 +390,7 @@ vnoremap <M-'> <ESC>@:
 inoremap <M-'> <ESC>@:
 
 " Fast Escape
+" Shift-space keysym check Xresources
 nnoremap <M-a> <ESC>
 vnoremap <M-a> <ESC>
 inoremap <M-a> <ESC>
@@ -871,7 +872,8 @@ let g:neomake_makeclean_maker = {
 " auto-pairs ------------------------- {{{
 let g:AutoPairsMultilineClose = 0
 let g:AutoPairsShortcutToggle = '<M-p>'
-let g:AutoPairsShortcutJump = '<S-Tab>'
+" Ctrl-space keysym check xresources
+let g:AutoPairsShortcutJump = '<F12>'
 let g:AutoPairsShortcutFastWrap = ''
 let g:AutoPairsFlyMode = 0
 let g:AutoPairsShortcutBackInsert = ''

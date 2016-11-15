@@ -4,10 +4,12 @@
 
 if ! type xdg-mime 2>&1 > /dev/null; then
     echo 'Please install xdg-mime'
+    exit 1
 fi
 
 if [ $# -ne 1 -o ! -f $1 ]; then
     echo "usage: $0 foo.desktop"
+    exit 1
 fi
 
 desktopFilePath="$1"

@@ -5,7 +5,7 @@
   default = simple
 [core]
   editor = nvim
-  pager = less
+	pager = diff-so-fancy | less
   whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
 [color]
   branch = auto

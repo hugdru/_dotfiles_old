@@ -34,9 +34,6 @@ zplug "zsh-users/zaw", nice:6
 # Oh My Zsh plugin for Elixir, IEX, Mix and Phoenix
 zplug "gusaiani/elixir-oh-my-zsh"
 
-# A next-generation cd command with an interactive filter
-# zplug "b4b4r07/enhancd", use:init.sh
-
 # Little script to create, navigate and delete bookmarks in Bash and Zsh, using the fuzzy finder fzf
 zplug "urbainvaes/fzf-marks"
 
@@ -46,14 +43,26 @@ zplug "seebi/dircolors-solarized"
 # A modified version of oh-my-zsh's plugin colored-man-pages, optimized for solarized dark theme in terminal
 zplug "zlsun/solarized-man"
 
+# Docker completion
+zplug "docker/docker", use:"contrib/completion/zsh/_docker"
+
+# Docker-compose completion
+zplug "docker/compose", use:"compose/contrib/completion/zsh/_docker-compose"
+
+# Command-line productivity booster, offers quick access to files and directories, inspired by autojump, z and v
+fasd_cache="${ZSH_CACHE_DIR}/fasd-init-cache"
+zplug clvv/fasd, \
+      as:command, \
+      hook-build:"./fasd --init zsh-hook zsh-ccomp zsh-ccomp-install zsh-wcomp zsh-wcomp-install >| $fasd_cache", nice:17
+
 # oh-my-zsh stuff
 zplug "robbyrussell/oh-my-zsh", use:"lib/*.zsh", nice:-1
+zplug "plugins/docker-compose", from:oh-my-zsh, use:"docker-compose.plugin.zsh"
 zplug "plugins/git", from:oh-my-zsh
 zplug "plugins/archlinux", from:oh-my-zsh
+zplug "plugins/node", from:oh-my-zsh
 zplug "plugins/npm", from:oh-my-zsh
 zplug "plugins/bower", from:oh-my-zsh
-zplug "plugins/docker", from:oh-my-zsh
-zplug "plugins/docker-compose", from:oh-my-zsh
 zplug "plugins/go", from:oh-my-zsh
 zplug "plugins/gradle", from:oh-my-zsh
 zplug "plugins/gulp", from:oh-my-zsh
@@ -63,6 +72,11 @@ zplug "plugins/vi-mode", from:oh-my-zsh
 zplug "plugins/golang", from:oh-my-zsh
 zplug "plugins/sudo", from:oh-my-zsh
 zplug "plugins/gb", from:oh-my-zsh
+zplug "plugins/postgres", from:oh-my-zsh
+zplug "plugins/rsync", from:oh-my-zsh
+zplug "plugins/tmux", from:oh-my-zsh
+zplug "plugins/grep", from:oh-my-zsh
+zplug "plugins/systemd", from:oh-my-zsh
 
 # Theme
 # zplug "aranasaurus/zemm-blinks.zsh-theme"
@@ -80,11 +94,11 @@ if ! zplug check --verbose; then
     fi
 fi
 
-zplug load --verbose
+zplug load
 
-## enhancd
-# export ENHANCD_COMMAND="c"
-##
+## fasd
+source "$fasd_cache"
+unset fasd_cache
 
 ## alias-tips
 export ZSH_PLUGINS_ALIAS_TIPS_TEXT="Alias: "
@@ -108,6 +122,8 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 zmodload zsh/terminfo
 bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
+bindkey "^P" history-substring-search-up
+bindkey "^N" history-substring-search-down
 
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
@@ -138,6 +154,7 @@ mkdir -p -m 700 "$myZsh"
 bindkey -M menuselect "${terminfo[kcbt]}" reverse-menu-complete
 
 ## man zshoptions
+# setopt extended_glob
 setopt print_exit_value
 setopt brace_ccl
 setopt menu_complete
@@ -157,6 +174,7 @@ setopt complete_aliases
 setopt interactive_comments
 setopt long_list_jobs
 
+export HISTIGNORE='&:sudo rm *:rm *'
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=2000
 SAVEHIST=2000

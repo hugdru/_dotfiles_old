@@ -27,6 +27,7 @@ ccache
 chromium
 clang
 clang-tools-extra
+cloc
 clojure
 closure-compiler
 cmake
@@ -296,6 +297,7 @@ tlp-rdw
 tmux
 toxcore
 traceroute
+transmission-gtk
 tree
 ttf-dejavu
 ttf-freefont
