@@ -1,6 +1,7 @@
 angular-cli
 brunch
 csslint
+diff-so-fancy
 eslint
 htmlhint
 jsonlint

@@ -220,6 +220,7 @@ pciutils
 pcmanfm-gtk3
 pcmciautils
 perl
+perl-file-mimeinfo
 pgadmin3
 php
 picard

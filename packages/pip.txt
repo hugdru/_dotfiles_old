@@ -27,6 +27,7 @@ pydocstyle
 pyflakes
 pylama
 pyparsing
+requests
 SecretStorage
 setuptools
 streamlink

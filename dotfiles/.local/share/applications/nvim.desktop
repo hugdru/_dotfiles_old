@@ -1,7 +1,7 @@
 [Desktop Entry]
 Encoding=UTF-8
-Name=Vim Text Editor (Console)
-Comment=Edit text files in a console using Vim
+Name=Neovim Text Editor (Console)
+Comment=Edit text files in a console using Neovim
 Exec=nvim %F
 Terminal=true
 Type=Application
