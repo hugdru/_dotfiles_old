@@ -225,6 +225,7 @@ pgadmin3
 php
 picard
 pkg-config
+postgresql
 powertop
 procps-ng
 psmisc

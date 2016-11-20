@@ -9,5 +9,6 @@ libtinfo-5
 mythes-pt_pt
 pacaur
 pdftk-bin
+plantuml
 radiotray
 xss-lock

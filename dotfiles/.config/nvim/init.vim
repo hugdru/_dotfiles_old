@@ -125,6 +125,9 @@ call plug#begin('~/.config/nvim/plugged')
 
   " Vim plugin that provides additional text objects
   Plug 'wellle/targets.vim'
+
+  " Postgresql syntax from Devrim GUNDUZ http://www.gunduz.org/postgresql/pgsql.vim
+  Plug 'exu/pgsql.vim'
 call plug#end()
 " }}}
 

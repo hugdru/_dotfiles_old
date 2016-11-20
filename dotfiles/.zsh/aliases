@@ -46,6 +46,7 @@ alias rca="rcda"
 alias rf="rop"
 
 unalias gb
+alias glfp="git log --follow -p --"
 
 # Check for aliases
 # oh-my-zsh/lib/directories.zsh

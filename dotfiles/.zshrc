@@ -50,7 +50,9 @@ zplug "docker/docker", use:"contrib/completion/zsh/_docker"
 zplug "docker/compose", use:"compose/contrib/completion/zsh/_docker-compose"
 
 # Command-line productivity booster, offers quick access to files and directories, inspired by autojump, z and v
-fasd_cache="${ZSH_CACHE_DIR}/fasd-init-cache"
+export CACHE_DIR="${HOME}/.cache"
+[[ ! -d "${CACHE_DIR}" ]] && mkdir -p "${CACHE_DIR}"
+fasd_cache="${CACHE_DIR}/fasd-init-cache"
 zplug clvv/fasd, \
       as:command, \
       hook-build:"./fasd --init zsh-hook zsh-ccomp zsh-ccomp-install zsh-wcomp zsh-wcomp-install >| $fasd_cache", nice:17
@@ -63,7 +65,6 @@ zplug "plugins/archlinux", from:oh-my-zsh
 zplug "plugins/node", from:oh-my-zsh
 zplug "plugins/npm", from:oh-my-zsh
 zplug "plugins/bower", from:oh-my-zsh
-zplug "plugins/go", from:oh-my-zsh
 zplug "plugins/gradle", from:oh-my-zsh
 zplug "plugins/gulp", from:oh-my-zsh
 zplug "plugins/man", from:oh-my-zsh
@@ -157,8 +158,9 @@ bindkey -M menuselect "${terminfo[kcbt]}" reverse-menu-complete
 # setopt extended_glob
 setopt print_exit_value
 setopt brace_ccl
-setopt menu_complete
+setopt no_menu_complete
 setopt auto_list
+setopt auto_menu
 setopt list_packed
 # setopt list_rows_first
 setopt auto_cd
