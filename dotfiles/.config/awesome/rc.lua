@@ -300,9 +300,10 @@ programs = {
   -- },
   browserGoogle = {
       name = "google-chrome-stable",
-      windowProperties = { class = "google-chrome" },
+      windowProperties = { class = {"google-chrome", "Google-chrome"} },
       rulesProperties = { tag = tags[1][byTagName.web], switchtotag = true },
       keybinding = { extraModKey = "Control", key = "s" },
+      ruleType = "rule_any",
       isRunOrRaise = true
   },
   irc = {

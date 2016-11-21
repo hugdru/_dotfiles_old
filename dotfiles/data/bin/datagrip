@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+datagrip_folder_inc="$HOME/data/opt/DataGrip"
+
+datagrip_folder="$(ls -dvr "$datagrip_folder_inc"* | head -n 1)"
+
+/home/hugdru/data/opt/DataGrip-2016.2.6/bin/datagrip.sh
