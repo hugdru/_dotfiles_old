@@ -63,6 +63,7 @@ zplug "plugins/docker-compose", from:oh-my-zsh, use:"docker-compose.plugin.zsh"
 zplug "plugins/git", from:oh-my-zsh
 zplug "plugins/archlinux", from:oh-my-zsh
 zplug "plugins/node", from:oh-my-zsh
+zplug "plugins/yarn", from:oh-my-zsh
 zplug "plugins/npm", from:oh-my-zsh
 zplug "plugins/bower", from:oh-my-zsh
 zplug "plugins/gradle", from:oh-my-zsh
@@ -81,10 +82,10 @@ zplug "plugins/systemd", from:oh-my-zsh
 
 # Theme
 # zplug "aranasaurus/zemm-blinks.zsh-theme"
-zplug "themes/blinks", from:oh-my-zsh
+zplug "themes/blinks", from:oh-my-zsh, as:theme
 # zplug "themes/sorin", from:oh-my-zsh
 # zplug "mafredri/zsh-async", nice:-2
-# zplug "sindresorhus/pure"
+# zplug "sindresorhus/pure", as:theme, use:"pure.zsh"
 # zplug "molovo/filthy"
 
 # Install plugins if there are plugins that have not been installed
@@ -140,6 +141,21 @@ bindkey "^[s" sudo-command-line
 ##
 
 ## vim command mode mapping ##
+bindkey "^[[5~" up-line-or-history
+bindkey "^[[6~" down-line-or-history
+bindkey "^[[7~" beginning-of-line
+bindkey "^[[8~" end-of-line
+
+# https://dougblack.io/words/zsh-vi-mode.html
+function zle-line-init zle-keymap-select {
+    VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
+    RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} !%{%B%F{cyan}%}%!%{%f%k%b%}"
+    zle reset-prompt
+}
+zle -N zle-line-init
+zle -N zle-keymap-select
+export KEYTIMEOUT=1
+
 # Alt + a
 bindkey -M viins '^[a' vi-cmd-mode
 ##
