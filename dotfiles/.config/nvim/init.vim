@@ -875,7 +875,7 @@ let g:neomake_makeclean_maker = {
 " auto-pairs ------------------------- {{{
 let g:AutoPairsMultilineClose = 0
 let g:AutoPairsShortcutToggle = '<M-p>'
-" Ctrl-space keysym check xresources
+" Ctrl-Tab keysym check xresources
 let g:AutoPairsShortcutJump = '<F12>'
 let g:AutoPairsShortcutFastWrap = ''
 let g:AutoPairsFlyMode = 0
