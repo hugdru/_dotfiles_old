@@ -11,6 +11,7 @@ alias o="open"
 alias ofc="openFileContents"
 alias u="urxvt > /dev/null 2>&1 &"
 alias td="cd $TMPDIR/tmpDownloads && ls"
+alias t="cd $TMPDIR"
 
 alias vimrc="vim $HOME/.config/nvim/init.vim"
 alias awesomrc="vim $HOME/.config/awesome/rc.lua"

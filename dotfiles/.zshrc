@@ -2,7 +2,6 @@ local zplug_dir="$HOME/.zplug/repos/zplug/zplug"
 
 if [[ ! -d ~/.zplug ]] then
     git clone https://github.com/zplug/zplug $zplug_dir
-    source $zplug_dir/init.zsh && zplug update --self
 fi
 
 source $zplug_dir/init.zsh
@@ -11,10 +10,10 @@ source $zplug_dir/init.zsh
 zplug "zplug/zplug"
 
 # Fish shell like syntax highlighting for Zsh
-zplug "zsh-users/zsh-syntax-highlighting", nice:18
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
 # ZSH port of Fish shell's history search feature
-zplug "zsh-users/zsh-history-substring-search", nice:19
+zplug "zsh-users/zsh-history-substring-search", defer:3
 
 # Fish-like autosuggestions for zsh
 zplug "zsh-users/zsh-autosuggestions"
@@ -26,10 +25,10 @@ zplug "zsh-users/zsh-completions"
 zplug "djui/alias-tips"
 
 # Easy setup of cdr for zsh
-zplug "willghatch/zsh-cdr", nice:5
+zplug "willghatch/zsh-cdr", defer:0
 
 # zsh anything.el-like widget
-zplug "zsh-users/zaw", nice:6
+zplug "zsh-users/zaw", defer:1
 
 # Oh My Zsh plugin for Elixir, IEX, Mix and Phoenix
 zplug "gusaiani/elixir-oh-my-zsh"
@@ -44,10 +43,10 @@ zplug "seebi/dircolors-solarized"
 zplug "zlsun/solarized-man"
 
 # Docker completion
-zplug "docker/docker", use:"contrib/completion/zsh/_docker"
+# zplug "docker/docker", use:"contrib/completion/zsh/_docker"
 
 # Docker-compose completion
-zplug "docker/compose", use:"compose/contrib/completion/zsh/_docker-compose"
+# zplug "docker/compose", use:"compose/contrib/completion/zsh/_docker-compose"
 
 # Command-line productivity booster, offers quick access to files and directories, inspired by autojump, z and v
 export CACHE_DIR="${HOME}/.cache"
@@ -55,11 +54,12 @@ export CACHE_DIR="${HOME}/.cache"
 fasd_cache="${CACHE_DIR}/fasd-init-cache"
 zplug clvv/fasd, \
       as:command, \
-      hook-build:"./fasd --init zsh-hook zsh-ccomp zsh-ccomp-install zsh-wcomp zsh-wcomp-install >| $fasd_cache", nice:17
+      hook-build:"./fasd --init zsh-hook zsh-ccomp zsh-ccomp-install zsh-wcomp zsh-wcomp-install >| $fasd_cache", defer:1
 
 # oh-my-zsh stuff
-zplug "robbyrussell/oh-my-zsh", use:"lib/*.zsh", nice:-1
-zplug "plugins/docker-compose", from:oh-my-zsh, use:"docker-compose.plugin.zsh"
+zplug "robbyrussell/oh-my-zsh", use:"lib/*.zsh", defer:0
+zplug "plugins/docker-compose", from:oh-my-zsh
+zplug "plugins/docker", from:oh-my-zsh
 zplug "plugins/git", from:oh-my-zsh
 zplug "plugins/archlinux", from:oh-my-zsh
 zplug "plugins/node", from:oh-my-zsh
@@ -84,7 +84,7 @@ zplug "plugins/systemd", from:oh-my-zsh
 # zplug "aranasaurus/zemm-blinks.zsh-theme"
 zplug "themes/blinks", from:oh-my-zsh, as:theme
 # zplug "themes/sorin", from:oh-my-zsh
-# zplug "mafredri/zsh-async", nice:-2
+# zplug "mafredri/zsh-async", defer:0
 # zplug "sindresorhus/pure", as:theme, use:"pure.zsh"
 # zplug "molovo/filthy"
 

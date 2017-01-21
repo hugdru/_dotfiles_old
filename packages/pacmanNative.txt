@@ -5,8 +5,12 @@ alsa-plugins
 alsa-utils
 android-tools
 android-udev
+ansible
+arc-icon-theme
+arc-solid-gtk-theme
 aspell
 aspell-en
+aspell-pt
 atop
 autoconf
 automake
@@ -25,6 +29,8 @@ cargo
 cbatticon
 ccache
 chromium
+clamav
+clamtk
 clang
 clang-tools-extra
 cloc
@@ -43,6 +49,7 @@ cups
 dart
 ddrescue
 device-mapper
+dhclient
 dhcpcd
 dialog
 diffutils
@@ -66,7 +73,6 @@ faenza-icon-theme
 fakeroot
 feh
 ffmpeg
-ffmpeg0.10
 file
 file-roller
 filesystem
@@ -95,6 +101,7 @@ gradle
 graphviz
 grep
 groff
+grub
 gsfonts
 gsopcast
 gst-libav
@@ -141,6 +148,7 @@ jq
 jre8-openjdk
 jre8-openjdk-headless
 jshon
+kdenlive
 keepassx2
 less
 lesspipe
@@ -205,8 +213,8 @@ noto-fonts-cjk
 noto-fonts-emoji
 npm
 ntfs-3g
-numix-themes
 openjdk8-doc
+openshot
 openssh
 oxygen-icons
 p7zip
@@ -239,6 +247,7 @@ python2-neovim
 qbittorrent
 qemu
 qtox
+redis
 reflector
 reiserfsprogs
 rfkill
@@ -291,6 +300,7 @@ texlive-plainextra
 texlive-pstricks
 texlive-publishers
 texlive-science
+texstudio
 the_silver_searcher
 thunderbird
 tidy
@@ -321,7 +331,6 @@ vicious
 vifm
 vim-spell-pt
 virt-manager
-virtualbox
 vlc
 volumeicon
 vulkan-intel
@@ -371,6 +380,7 @@ xorg-setxkbmap
 xorg-xauth
 xorg-xbacklight
 xorg-xclipboard
+xorg-xdpyinfo
 xorg-xev
 xorg-xfontsel
 xorg-xinit

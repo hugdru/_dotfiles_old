@@ -82,7 +82,7 @@ function updatePackages() {
   composer global update
   zplug update
   nvim -c ':PlugUpdate | :qa'
-  nix-env -u --keep-going --leq
+  # nix-env -u --keep-going --leq
 }
 
 function cleanGarbage() {

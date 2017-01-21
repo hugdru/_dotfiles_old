@@ -50,10 +50,9 @@ colord:x:124:
 nm-openconnect:x:104:
 nm-openvpn:x:995:
 rtkit:x:133:
-tox-bootstrapd:x:994:
 unbound:x:993:
 vboxusers:x:108:hugdru
-hugdru:x:1000:
+hugdru:x:1000:hugdru
 networkmanager:x:1001:hugdru
 postgres:x:88:
 nixbld:x:992:
@@ -65,3 +64,6 @@ brlapi:x:989:
 ceph:x:988:
 docker:x:987:hugdru
 vboxsf:x:109:
+redis:x:986:
+clamav:x:64:
+tox-bootstrapd:x:199:

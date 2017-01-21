@@ -35,7 +35,7 @@ export LESSOPEN="| $(which highlight) %s --out-format xterm256 --line-numbers --
 export EDITOR=nvim
 export BROWSER=chromium
 export _JAVA_AWT_WM_NONREPARENTING=1
-export SWT_GTK3=0
+# export SWT_GTK3=0
 
 export CHROMIUM_USER_FLAGS="$(cat "$HOME/.config/chromium-flags.conf" | tr '\n' ' ')"
 

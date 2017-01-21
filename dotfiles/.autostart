@@ -6,7 +6,7 @@ xss-lock -- xscreensaver-command -lock &
 compton --xrender-sync-fence --xrender-sync --backend glx --vsync opengl-swc -b
 volumeicon &
 cbatticon &
-chromium & #chromium,web,class
+chromium & #Chromium,web,class
 thunderbird &
 qtox &
 artha &
