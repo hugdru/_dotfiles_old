@@ -85,7 +85,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'tpope/vim-fugitive'
 
   " Provides database access to many dbms (Oracle, Sybase, Microsoft, MySQL, DBI,..)
-  Plug 'vim-scripts/dbext.vim'
+  " Plug 'vim-scripts/dbext.vim'
 
   " Vim Git runtime files
   Plug 'tpope/vim-git'
@@ -341,6 +341,16 @@ augroup nvimrc
   au FileType vim
         \ set foldmethod=marker
 augroup END
+
+" PEP8 indentation
+au BufNewFile,BufRead *.py
+    \ set tabstop=4
+    \ set softtabstop=4
+    \ set shiftwidth=4
+    \ set textwidth=79
+    \ set expandtab
+    \ set autoindent
+    \ set fileformat=unix
 
 " }}}
 

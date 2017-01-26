@@ -153,7 +153,7 @@ programs = {
   },
   editorIdea = {
       name = "idea",
-      windowProperties = { class = {"jetbrains-idea-ce", "jetbrains-idea", "jetbrains-webstorm", "jetbrains-studio"} },
+      windowProperties = { class = {"jetbrains-idea-ce", "jetbrains-idea", "jetbrains-webstorm", "jetbrains-studio", "jetbrains-pycharm"} },
       ruleType = "rule_any",
       rulesProperties = { tag = "dev" },
       keybinding = { key = "e" },
@@ -508,7 +508,7 @@ root.buttons(awful.util.table.join(
 globalkeys = awful.util.table.join(
     -- Plugins
     awful.key({ modkey,           }, "/", launch_cheeky,
-              {description = "cheeky"}),
+              {description = "cheeky", group = "plugins"}),
     -- awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
     --           {description="show help", group="awesome"}),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev,

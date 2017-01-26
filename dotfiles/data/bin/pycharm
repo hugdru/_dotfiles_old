@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+pycharm="$HOME/data/opt/pycharm"
+
+pycharm_folder="$(ls -dvr "$pycharm"* | head -n 1)"
+
+"${pycharm_folder}/bin/pycharm.sh"

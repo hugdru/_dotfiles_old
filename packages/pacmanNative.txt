@@ -8,6 +8,7 @@ android-udev
 ansible
 arc-icon-theme
 arc-solid-gtk-theme
+aria2
 aspell
 aspell-en
 aspell-pt
@@ -112,11 +113,6 @@ gst-plugins-good
 gst-plugins-ugly
 gstreamer
 gstreamer-vaapi
-gstreamer0.10
-gstreamer0.10-bad-plugins
-gstreamer0.10-base
-gstreamer0.10-ffmpeg
-gstreamer0.10-ugly-plugins
 gtk-engine-murrine
 gtk-update-icon-cache
 gtkmm
@@ -152,7 +148,12 @@ kdenlive
 keepassx2
 less
 lesspipe
+lib32-alsa-plugins
 lib32-clang
+lib32-gst-plugins-base
+lib32-gst-plugins-base-libs
+lib32-gst-plugins-good
+lib32-gstreamer
 lib32-libva-intel-driver
 lib32-libva-vdpau-driver
 lib32-mesa-vdpau
@@ -240,6 +241,7 @@ psmisc
 pulseaudio
 pulseaudio-alsa
 pv
+python-dbus
 python-neovim
 python-pip
 python2-discid

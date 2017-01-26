@@ -14,7 +14,7 @@ alias td="cd $TMPDIR/tmpDownloads && ls"
 alias t="cd $TMPDIR"
 
 alias vimrc="vim $HOME/.config/nvim/init.vim"
-alias awesomrc="vim $HOME/.config/awesome/rc.lua"
+alias awesomerc="vim $HOME/.config/awesome/rc.lua"
 alias zshrc="vim $HOME/.zshrc"
 
 alias ls='ls --color=auto'

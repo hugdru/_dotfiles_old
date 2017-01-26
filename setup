@@ -1,11 +1,11 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 
 set -e
 
-conf_dir=$HOME/configuration
-app_dir=$conf_dir/packages
-sys_dir=$conf_dir/system
-dot_dir=$conf_dir/dotfiles
+conf_dir="$HOME/configuration"
+app_dir="$conf_dir/packages"
+sys_dir="$conf_dir/system"
+dot_dir="$conf_dir/dotfiles"
 pacman_native='pacmanNative.txt'
 pacman_foreign='pacmanForeign.txt'
 composer='composer.txt'
@@ -13,24 +13,33 @@ pip='pip.txt'
 gem='gem.txt'
 npm='npm.txt'
 
+typeset -A args
+args=(
+  ["save"]="# saves certain dotfiles and system files"
+  ["install"]="# creates username if needed, restores personal files, gets and sets the dotfiles, restores packages"
+  ["links"]="# links git dotfiles to the home directory"
+  ["fonts"]="# retrieves some fonts and installs them"
+)
+
 main() (
-  if [[ $# -ne 1 || ($1 != 'save' && $1 != 'install' && $1 != 'links' && $1 != 'fonts') ]] then
-    1>&2 echo "$0 (save|install|links)"
+  if [[ $# -lt 1 || -z "${args[$1]}" ]]; then
+    error
   fi
-  $1
+
+  "$1" "${@:2}"
 )
 
 save () (
-  mkdir -p $app_dir
-  mkdir -p $sys_dir
+  mkdir -p "$app_dir"
+  mkdir -p "$sys_dir"
 
-  pacman -Qqen > $app_dir/$pacman_native
-  pacman -Qqem > $app_dir/$pacman_foreign
+  pacman -Qqen > "$app_dir/$pacman_native"
+  pacman -Qqem > "$app_dir/$pacman_foreign"
 
-  pip list --user | awk '{print $1}' > $app_dir/$pip
-  composer global show --direct | awk '{print $1}' > $app_dir/$composer
-  gem list --local --no-details --no-versions -q > $app_dir/$gem
-  ls "$(npm root -g)" > $app_dir/$npm
+  pip list --user --format=freeze | awk -F "==" '{print $1}' > "$app_dir/$pip"
+  composer global show --direct | awk '{print $1}' > "$app_dir/$composer"
+  gem list --local --no-details --no-versions -q > "$app_dir/$gem"
+  ls "$(npm root -g)" > "$app_dir/$npm"
 
   sysFiles=(
     '/etc/default/tlp'
@@ -54,61 +63,61 @@ save () (
     '/etc/NetworkManager/NetworkManager.conf'
   )
 
-  cp --parents -a $sysFiles $sys_dir
-  chmod 644 $sys_dir/etc/unbound/unbound.conf
+  cp --parents -a "$sysFiles" "$sys_dir"
+  chmod 644 "$sys_dir/etc/unbound/unbound.conf"
 )
 
 install() (
   ########## 1 - If logged in as root ask for target user ##########
-  if [[ $EUID -eq 0 ]] then
+  if [[ "$EUID" -eq 0 ]]; then
     echo 'install files for user with username...'
-    read $user
-    if [[ -z $(getent passwd $user) ]] then
-      useradd -m -g $user -G wheel,uucp,rfkill,games,users,vboxusers,wireshark,hugdru,networkmanager -s /bin/zsh $user
-      home=/home/$user
-      mkdir -p $home
-      chown -R $user:$user $home
+    read user
+    if [[ -z "$(getent passwd $user)" ]]; then
+      useradd -m -g "$user" -G wheel,uucp,rfkill,games,users,vboxusers,wireshark,hugdru,networkmanager -s /bin/zsh "$user"
+      home="/home/$user"
+      mkdir -p "$home"
+      chown -R "$user:$user $home"
     fi
-    su $user
+    su --login "$user"
   fi
   ##########                   End of 1                   ##########
 
   ##########  2 - Get private keys, data and other personal stuff  ##########
   echo 'Getting personal files'
   private_storage_uuid='ffbc86b7-419d-4c71-a094-3670693e65de'
-  private_storage="$(mount | grep $(readlink -f /dev/disk/by-uuid/$private_storage_uuid) | awk '{print $3}')"
+  private_storage="$(mount | grep $(readlink -f "/dev/disk/by-uuid/$private_storage_uuid") | awk '{print $3}')"
 
-  if [[ -z $private_storage ]]; then
+  if [[ -z "$private_storage" ]]; then
     1>&2 echo 'Private storage not mounted'
     exit 1
   fi
 
-  backups=$private_storage/borgBackups
-  backup=$(borg list $backups | tail -n 1 | awk '{print $1}')
-  backup_home=home/$USER
-  data_to_extract=($backup_home/.gnupg $backup_home/.weechat $backup_home/.config/tox)
+  backups="$private_storage/borgBackups"
+  backup=$(borg list "$backups" | tail -n 1 | awk '{print $1}')
+  backup_home="home/$USER"
+  data_to_extract=("$backup_home/.gnupg" "$backup_home/.weechat" "$backup_home/.config/tox")
   cd /
-  borg extract $backups::$backup $data_to_extract
+  borg extract "$backups::$backup" "$data_to_extract"
   ##########                       End of 2                        ##########
 
   ########## 3 - Configuration files ##########
-  if [[ ! -d $conf_dir/.git ]] then
-    git clone git@bitbucket.org:hugdru/archlinuxconfiguration.git $conf_dir
+  if [[ ! -d "$conf_dir/.git" ]]; then
+    git clone git@bitbucket.org:hugdru/archlinuxconfiguration.git "$conf_dir"
   fi
 
   echo 'Setting up symbolic links'
-  setUpSymbolicLinks $dot_dir
+  setUpSymbolicLinks "$dot_dir"
   ##########        End of 3         ##########
 
   ########## 4 - Packages ##########
   # Composer
-  composer global require $(<$app_dir/$composer)
+  composer global require $(<"$app_dir/$composer")
   # Pip
-  pip install --user $(<$app_dir/$pip)
+  pip install --user $(<"$app_dir/$pip")
   # npm
-  npm install -g $(<$app_dir/$npm)
+  npm install -g $(<"$app_dir/$npm")
   # gem
-  gem install $(<$app_dir/$gem)
+  gem install $(<"$app_dir/$gem")
 
   # pip freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs pip install --user --upgrade
   #
@@ -122,7 +131,7 @@ install() (
   curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   nvim -c ':PlugUpdate | :qa'
-  $HOME/.config/nvim/plugged/YouCompleteMe/install.py --all
+  "$HOME/.config/nvim/plugged/YouCompleteMe/install.py" --all
   ##########        End of 5        ##########
 
   ########## 6 - zsh setup ##########
@@ -141,9 +150,9 @@ fonts() (
   mkdir -p "$fonts_dir"
 
   tmp_dir="/tmp/awesome-terminal-fonts-$$"
-  git clone https://github.com/gabrielelana/awesome-terminal-fonts.git $tmp_dir
-  cp $tmp_dir/build/*.ttf $fonts_dir
-  rm -rf $tmp_dir
+  git clone https://github.com/gabrielelana/awesome-terminal-fonts.git "$tmp_dir"
+  cp $tmp_dir/build/*.ttf "$fonts_dir"
+  rm -rf "$tmp_dir"
 
   cd "$fonts_dir"
   curl -fLo "Sauce Code Pro Black Nerd Font Complete Mono.ttf" 'https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SourceCodePro/Black/complete/Sauce%20Code%20Pro%20Black%20Nerd%20Font%20Complete%20Mono.ttf'
@@ -163,30 +172,37 @@ fonts() (
 )
 
 links() (
-  setUpSymbolicLinks $dot_dir
+  setUpSymbolicLinks "$dot_dir"
 )
 
 setUpSymbolicLinks() (
-  if [[ $# -ne 1 || ! -d $1 ]] then
+  if [[ $# -ne 1 || ! -d "$1" ]]; then
     1>2 echo "$funcstack[1] expects a path to a directory"
   fi
 
   echo 'Symbolic Links will override any existing files! You might lose your configuration files! Yy to continue'
   read response
 
-  if [[ $response != "Yy" ]] then
+  if [[ "$response" != "Yy" ]]; then
     return
   fi
 
-  find $1 \( -type f -o -type l \) -printf '%P\0' | while read -d $'\0' file
+  find "$1" \( -type f -o -type l \) -a -not -path '*/.git/*' -printf '%P\0' | while read -d $'\0' file
   do
-    dir=$HOME/${file%/*}
-    if [[ -d $dir ]] then
-      mkdir -p $dir
+    dir="${file%/*}"
+    if [[ -d "$1/$dir" ]]; then
+      mkdir -p "$HOME/$dir"
     fi
-    echo "$(readlink -f "$1/$file")" $HOME/$file
-    ln -f -s "$(readlink -f "$1/$file")" $HOME/$file
+    echo "$(readlink -f "$1/$file")" "$HOME/$file"
+    ln -f -s "$(readlink -f "$1/$file")" "$HOME/$file"
   done
 )
 
-main $@
+error() {
+    for key in "${!args[@]}"; do
+      1>&2 echo -e "$key ${args[$key]}"
+    done
+    exit 1
+}
+
+main "$@"
