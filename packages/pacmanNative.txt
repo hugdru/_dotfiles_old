@@ -16,6 +16,7 @@ atop
 autoconf
 automake
 awesome
+aws-cli
 bash
 bind-tools
 binutils
@@ -48,6 +49,7 @@ cryptsetup
 ctags
 cups
 dart
+dcd
 ddrescue
 device-mapper
 dhclient
@@ -55,12 +57,15 @@ dhcpcd
 dialog
 diffutils
 djvulibre
+dmd
 dmidecode
 docker
 docker-compose
 docker-machine
 dosfstools
 doxygen
+dtools
+dub
 e2fsprogs
 eclipse-common
 eclipse-java
@@ -86,6 +91,7 @@ freetype2
 fzf
 gawk
 gdb
+gdc
 gettext
 gimp
 git
@@ -146,6 +152,7 @@ jre8-openjdk-headless
 jshon
 kdenlive
 keepassx2
+kotlin
 less
 lesspipe
 lib32-alsa-plugins
@@ -157,7 +164,6 @@ lib32-gstreamer
 lib32-libva-intel-driver
 lib32-libva-vdpau-driver
 lib32-mesa-vdpau
-libc++
 libmythes
 libreoffice-still
 libsass
@@ -193,11 +199,14 @@ mongodb
 mongodb-tools
 mono
 mono-basic
+mono-debugger
+mono-tools
 monodevelop
 mp3gain
 mpv
 mutt
 mythes-en
+namcap
 nano
 neovim
 netctl
@@ -215,6 +224,8 @@ noto-fonts-emoji
 npm
 ntfs-3g
 openjdk8-doc
+openmp
+openmpi
 openshot
 openssh
 oxygen-icons
@@ -228,6 +239,7 @@ pavucontrol
 pciutils
 pcmanfm-gtk3
 pcmciautils
+perf
 perl
 perl-file-mimeinfo
 pgadmin3
@@ -326,6 +338,8 @@ urxvt-perls
 usb_modeswitch
 usbutils
 util-linux
+vagrant
+vagrant-substrate
 valgrind-multilib
 vdpauinfo
 vi
@@ -398,6 +412,8 @@ xproto
 xscreensaver
 xsel
 xsp
+xterm
+yasm
 zathura
 zathura-djvu
 zathura-pdf-mupdf

@@ -153,11 +153,21 @@ programs = {
   },
   editorIdea = {
       name = "idea",
-      windowProperties = { class = {"jetbrains-idea-ce", "jetbrains-idea", "jetbrains-webstorm", "jetbrains-studio", "jetbrains-pycharm"} },
+      windowProperties = { class = {"jetbrains-idea-ce", "jetbrains-idea", "jetbrains-webstorm", "jetbrains-studio", "jetbrains-pycharm", "jetbrains-clion" } },
       ruleType = "rule_any",
       rulesProperties = { tag = "dev" },
       keybinding = { key = "e" },
       isRunOrRaise = true
+  },
+  editorMonodevelop = {
+      name = "MonoDevelop",
+      windowProperties = { class = "MonoDevelop" },
+      rulesProperties = { tag = "dev" },
+  },
+  editorPapyrus = {
+      name = "Papyrus",
+      windowProperties = { class = "Papyrus" },
+      rulesProperties = { tag = "dev" },
   },
   editorEclipse = {
       name = "eclipse",

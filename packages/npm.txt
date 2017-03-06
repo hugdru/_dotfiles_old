@@ -6,5 +6,3 @@ jsonlint
 markdown-pdf
 node-sass
 stylelint
-typescript
-yarn

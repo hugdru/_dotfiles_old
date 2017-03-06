@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+(find "/etc" -iname "*.pacnew" -print0) 2>/dev/null | while read -d $'\0' pacnew_file
+do
+  file="${pacnew_file%.*}"
+  echo "$file"
+  if [[ -f "$file" ]]; then
+    nvim -d "$file" "$pacnew_file" < /dev/null
+  fi
+done

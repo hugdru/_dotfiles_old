@@ -45,6 +45,12 @@ call plug#begin('~/.config/nvim/plugged')
   " A code-completion engine for Vim
   Plug 'Valloric/YouCompleteMe'
 
+  " Coordinate D tools to work together for you
+  Plug 'idanarye/vim-dutyl'
+
+  " Additional Vim syntax highlighting for C++ (including C++11/14)
+  Plug 'octol/vim-cpp-enhanced-highlight'
+
   " Go development plugin for Vim
   Plug 'fatih/vim-go'
 
@@ -143,6 +149,7 @@ if &t_Co > 2 || has("gui_running")
   syntax on
   set background=dark
   colorscheme solarized
+  highlight clear SignColumn
   hi MatchParen cterm=bold ctermbg=none ctermfg=208 " Little tweak with the matching parents colors
 endif
 " }}}
@@ -341,18 +348,6 @@ augroup nvimrc
   au FileType vim
         \ set foldmethod=marker
 augroup END
-
-" PEP8 indentation
-au BufNewFile,BufRead *.py
-    \ set tabstop=4
-    \ set softtabstop=4
-    \ set shiftwidth=4
-    \ set textwidth=79
-    \ set expandtab
-    \ set autoindent
-    \ set fileformat=unix
-
-" }}}
 
 " *center*visual ---------------------------- {{{
 " http://stackoverflow.com/questions/26137838/vim-centering-text-within-selection
@@ -893,6 +888,11 @@ let g:AutoPairsShortcutBackInsert = ''
 " }}}
 
 " vim-go ----------------------------- {{{
+" }}}
+
+" vim-dutyl -------------------------- {{{
+let g:dutyl_stdImportPaths=['/usr/include/dlang/dmd']
+let g:dutyl_neverAddClosingParen=1
 " }}}
 
 " Lots of stuff from here and there -- {{{

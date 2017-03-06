@@ -24,8 +24,11 @@ colorgcc_folder='/usr/lib/colorgcc/bin/'
 ## golang
 export GOPATH="$HOME/data/golang"
 ##
+## pre-compiled binaries from other sources
+home_opt_bin_folder="$HOME/data/opt/bin"
+##
 
-export PATH="$HOME/data/bin:$pip_folder:$prefix_bin:$composer_folder:$sicstus_folder:$ruby_folder:$colorgcc_folder:$GOPATH/bin:$PATH"
+export PATH="$HOME/data/bin:$pip_folder:$prefix_bin:$composer_folder:$sicstus_folder:$ruby_folder:$colorgcc_folder:$GOPATH/bin:$home_opt_bin_folder:$PATH"
 
 export CCACHE_PATH='/usr/bin'
 export CCACHE_DIR='/tmp/ccache'
