@@ -21,6 +21,7 @@ bash
 bind-tools
 binutils
 bison
+bless
 boost
 boost-libs
 borg
@@ -152,6 +153,7 @@ jre8-openjdk-headless
 jshon
 kdenlive
 keepassx2
+kexec-tools
 kotlin
 less
 lesspipe
@@ -164,6 +166,7 @@ lib32-gstreamer
 lib32-libva-intel-driver
 lib32-libva-vdpau-driver
 lib32-mesa-vdpau
+lib32-vulkan-intel
 libmythes
 libreoffice-still
 libsass
@@ -174,15 +177,18 @@ libva-vdpau-driver
 libvdpau-va-gl
 licenses
 linux
+linux-headers
 linux-lts
 linux-lts-headers
 lldb
+lm_sensors
 logrotate
 lshw
 lsof
 lvm2
 lxappearance
 m4
+macchanger
 make
 man-db
 man-pages
@@ -191,7 +197,6 @@ mdadm
 memconf
 mesa
 mesa-demos
-mesa-libgl
 mesa-vdpau
 mlocate
 modemmanager
@@ -202,6 +207,7 @@ mono-basic
 mono-debugger
 mono-tools
 monodevelop
+mosquitto
 mp3gain
 mpv
 mutt
@@ -209,6 +215,7 @@ mythes-en
 namcap
 nano
 neovim
+net-tools
 netctl
 nethogs
 network-manager-applet
@@ -246,6 +253,7 @@ pgadmin3
 php
 picard
 pkg-config
+poedit
 postgresql
 powertop
 procps-ng
@@ -279,6 +287,7 @@ shadow
 shared-mime-info
 shellcheck
 simplescreenrecorder
+smartmontools
 smplayer
 smplayer-skins
 smplayer-themes
@@ -295,7 +304,6 @@ systemd-sysvcompat
 tar
 tclap
 tcpdump
-terminator
 terminus-font
 texinfo
 texlive-bibtexextra
@@ -316,6 +324,7 @@ texlive-publishers
 texlive-science
 texstudio
 the_silver_searcher
+thermald
 thunderbird
 tidy
 tlp
@@ -347,6 +356,9 @@ vicious
 vifm
 vim-spell-pt
 virt-manager
+virtualbox
+virtualbox-guest-dkms
+virtualbox-guest-iso
 vlc
 volumeicon
 vulkan-intel
@@ -360,6 +372,7 @@ wmname
 wpa_supplicant
 x264
 x265
+x86_energy_perf_policy
 xbindkeys
 xcb-proto
 xcb-util
@@ -376,6 +389,7 @@ xextproto
 xf86-input-libinput
 xf86-video-amdgpu
 xf86-video-ati
+xf86-video-fbdev
 xf86-video-intel
 xf86vidmodeproto
 xfsprogs

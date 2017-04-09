@@ -1,4 +1,5 @@
 bigdecimal
+bundler
 did_you_mean
 io-console
 json

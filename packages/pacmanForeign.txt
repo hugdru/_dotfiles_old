@@ -13,6 +13,7 @@ pacaur
 papi
 pdftk-bin
 plantuml
-visual-studio-code
+slack-desktop
+staruml
 xss-lock
 yarn

@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+checkstyle_jar_inc="$HOME/data/opt/checkstyle/checkstyle-"
+
+checkstyle_jar="$(ls -dvr "$checkstyle_jar_inc"* | head -n 1)"
+
+java -jar "${checkstyle_jar}"

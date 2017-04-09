@@ -109,7 +109,7 @@ awful.layout.layouts = {
 
 -- Define a tag table which hold all screen tags.
 tags = {
-    names = { "web", "doc", "dev", "chat", "news", "notes", "sys", "misc" },
+    names = { "web", "dev", "doc", "chat", "news", "notes", "sys", "misc" },
     layouts = { awful.layout.layouts[1], awful.layout.layouts[1], awful.layout.layouts[1], awful.layout.layouts[1], awful.layout.layouts[1], awful.layout.layouts[1], awful.layout.layouts[2], awful.layout.layouts[1] },
 }
 
@@ -159,6 +159,13 @@ programs = {
       keybinding = { key = "e" },
       isRunOrRaise = true
   },
+  editorSlack = {
+      name = "slack",
+      windowProperties = { class = "Slack" },
+      rulesProperties = { tag = "chat", switchtotag = true },
+      keybinding = { extraModKey = "Shift", key = "e" },
+      isRunOrRaise = true
+  },
   editorMonodevelop = {
       name = "MonoDevelop",
       windowProperties = { class = "MonoDevelop" },
@@ -169,21 +176,21 @@ programs = {
       windowProperties = { class = "Papyrus" },
       rulesProperties = { tag = "dev" },
   },
-  editorEclipse = {
-      name = "eclipse",
-      windowProperties = { class = {"Eclipse"}, instance = {"Eclipse"} },
-      ruleType = "rule_any",
-      rulesProperties = { tag = "dev" },
-      keybinding = { extraModKey = "Shift", key = "e" },
-      isRunOrRaise = true
-  },
-  editorVim = {
-      name = terminal .. " -name codeEditor -e " .. editor,
-      windowProperties = { instance = "codeEditor" },
-      rulesProperties = { tag = "dev", switchtotag = true },
-      keybinding = { extraModKey = "Ctrl", key = "e" },
-      isRunOrRaise = true
-  },
+  -- editorEclipse = {
+  --     name = "eclipse",
+  --     windowProperties = { class = {"Eclipse"}, instance = {"Eclipse"} },
+  --     ruleType = "rule_any",
+  --     rulesProperties = { tag = "dev" },
+  --     keybinding = { extraModKey = "Shift", key = "e" },
+  --     isRunOrRaise = true
+  -- },
+  -- editorVim = {
+  --     name = terminal .. " -name codeEditor -e " .. editor,
+  --     windowProperties = { instance = "codeEditor" },
+  --     rulesProperties = { tag = "dev", switchtotag = true },
+  --     keybinding = { extraModKey = "Ctrl", key = "e" },
+  --     isRunOrRaise = true
+  -- },
   notesZim = {
       name = "zim",
       windowProperties = { class = {"Zim"}, instance = {"zim"} },
@@ -519,8 +526,8 @@ globalkeys = awful.util.table.join(
     -- Plugins
     awful.key({ modkey,           }, "/", launch_cheeky,
               {description = "cheeky", group = "plugins"}),
-    -- awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
-    --           {description="show help", group="awesome"}),
+    awful.key({ modkey,           }, "`",      hotkeys_popup.show_help,
+              {description="show help", group="awesome"}),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
               {description = "view previous", group = "tag"}),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext,
@@ -543,13 +550,13 @@ globalkeys = awful.util.table.join(
         end,
         {description = "focus previous by index", group = "client"}
     ),
-    awful.key({ "Mod1",           }, "Tab",
+    awful.key({ modkey,           }, "Tab",
         function ()
           awful.client.focus.byidx( 1)
         end,
         {description = "focus next by index", group = "client"}
     ),
-    awful.key({ "Mod1", "Shift"   }, "Tab",
+    awful.key({ modkey, "Shift"   }, "Tab",
         function ()
           awful.client.focus.byidx(-1)
         end,
@@ -569,7 +576,7 @@ globalkeys = awful.util.table.join(
               {description = "focus the previous screen", group = "screen"}),
     awful.key({ modkey,           }, "u", awful.client.urgent.jumpto,
               {description = "jump to urgent client", group = "client"}),
-    awful.key({ modkey,           }, "Tab",
+    awful.key({ "Mod1",           }, "Tab",
         function ()
             awful.client.focus.history.previous()
             if client.focus then

@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+pmd_folder_inc="$HOME/data/opt/pmd-bin-"
+
+pmd_folder="$(ls -dvr "$pmd_folder_inc"* | head -n 1)"
+
+"${pmd_folder}/bin/run.sh"
