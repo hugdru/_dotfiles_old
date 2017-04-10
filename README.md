@@ -54,7 +54,6 @@ I use neovim, dotfiles/.vimrc is outdated and I no longer use "normal" vim. vim 
 #### wm manager ####
 https://awesome.naquadah.org/ - My configuration is pretty simple I don't like to have too many things in the way.
   * Cheeky for easy application jump, shortcut: modkey /
-  * Revelation for exposé, shortcut: modkey i
   * Added support for loading programs on boot from $HOME/.autostart with custom rules.
   * Move the tags creation up and created a table with mapping inverted, tag["name"]->index for easy reference in the programs table.
   * Created a table of programs with custom rules and shortcuts for easy configuration.
@@ -63,7 +62,7 @@ https://awesome.naquadah.org/ - My configuration is pretty simple I don't like t
    * Modkey tab, switches between current and last window.
    * Alt tab, cycles the windows forward on a tag
    * Alt Shift tab, same but the other way
-   * Modkey \, switches between current and last tag
+   * Modkey \\, switches between current and last tag
    * Modkey f, to set window to maximize.
    * Modkey shift f, to set window to full screen.
 
