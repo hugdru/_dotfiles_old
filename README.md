@@ -9,7 +9,7 @@ Installed software be it from distro package manager or others.
 System configuration files are kept here.
 
 #### setup ####
-A zsh script with functions to help save, create links and install the configuration.
+A bash script with functions to help save, create links and install the configuration.
 
 ## Setup ##
 #### ./setup links ####
