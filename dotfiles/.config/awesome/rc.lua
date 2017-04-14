@@ -68,18 +68,17 @@ end
 -- }}}
 
 -- {{{ Variable definitions
--- Themes define colours, icons, font and wallpapers.
-beautiful.init(awful.util.get_themes_dir() .. "default/theme.lua")
-
-autostartFilepath = os.getenv("HOME") .. "/.autostart"
-
--- {{{ Variable definitions
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
 -- If you do not like this or do not have such a key,
 -- I suggest you to remap Mod4 to another key using xmodmap or other tools.
 -- However, you can use another modifier like Mod1, but it may interact with others.
-modkey = "Mod4"
+local modkey = "Mod4"
+local altkey = "Mod1"
+-- Themes define colours, icons, font and wallpapers.
+-- beautiful.init(awful.util.get_themes_dir() .. "default/theme.lua")
+beautiful.init(awful.util.getdir("config") .. "/themes/awesome-solarized/dark/theme.lua")
+local autostartFilepath = os.getenv("HOME") .. "/.autostart"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
@@ -114,11 +113,11 @@ tags = {
 }
 
 -- This is used later as the default terminal and editor to run.
-terminal = "urxvt"
-secureTerminal = terminal .. ' -pe "-default,-keyboard-select,-url-select"'
-runCmd = terminal .. " -e "
-editor = os.getenv("EDITOR") or "nano"
-editor_cmd = terminal .. " -e " .. editor
+local terminal = "urxvt"
+local secureTerminal = terminal .. ' -pe "-default,-keyboard-select,-url-select"'
+local runCmd = terminal .. " -e "
+local editor = os.getenv("EDITOR") or "nano"
+local editor_cmd = terminal .. " -e " .. editor
 
 programs = {
   systemTerminal = {
@@ -550,13 +549,13 @@ globalkeys = awful.util.table.join(
         end,
         {description = "focus previous by index", group = "client"}
     ),
-    awful.key({ "Mod1",           }, "Tab",
+    awful.key({ altkey,           }, "Tab",
         function ()
           awful.client.focus.byidx( 1)
         end,
         {description = "focus next by index", group = "client"}
     ),
-    awful.key({ "Mod1", "Shift"   }, "Tab",
+    awful.key({ altkey, "Shift"   }, "Tab",
         function ()
           awful.client.focus.byidx(-1)
         end,
