@@ -585,7 +585,7 @@ globalkeys = awful.util.table.join(
         {description = "go back", group = "client"}),
     awful.key({ modkey }, "b",
       function ()
-        mywibox[mouse.screen].visible = not mywibox[mouse.screen].visible
+        mouse.screen.mywibox.visible = not mouse.screen.mywibox.visible
       end),
 
     -- Standard program
