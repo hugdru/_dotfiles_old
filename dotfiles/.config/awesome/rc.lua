@@ -11,8 +11,12 @@ local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
 
--- External Plugins
+-- {{{ External Plugins
+-- https://github.com/svexican/cheeky
 local cheeky = require("cheeky")
+-- https://awesomewm.org/recipes/xrandr/
+local xrandr = require("xrandr")
+-- }}}
 
 -- {{{ cheeky
 function launch_cheeky()
@@ -522,9 +526,13 @@ root.buttons(awful.util.table.join(
 
 -- {{{ Keybindings
 globalkeys = awful.util.table.join(
-    -- Plugins
+    -- {{{ Plugins
     awful.key({ modkey,           }, "/", launch_cheeky,
               {description = "cheeky", group = "plugins"}),
+    awful.key({ modkey,           }, "=", function() xrandr.xrandr() end,
+              {description = "xrandr", group = "plugins"}),
+    -- }}}
+
     awful.key({ modkey,           }, "`",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
@@ -586,7 +594,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey }, "b",
       function ()
         mouse.screen.mywibox.visible = not mouse.screen.mywibox.visible
-      end),
+      end, {description = "hide mywibox", group = "screen"}),
 
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
@@ -613,7 +621,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
               {description = "select previous", group = "layout"}),
 
-    awful.key({ modkey, "Control" }, "n",
+    awful.key({ modkey, "Shift"   }, "n",
               function ()
                   local c = awful.client.restore()
                   -- Focus restored client
@@ -623,6 +631,15 @@ globalkeys = awful.util.table.join(
                   end
               end,
               {description = "restore minimized", group = "client"}),
+    awful.key({ modkey, "Control" }, "n",
+              function ()
+                for _, tag in ipairs(awful.screen.focused().selected_tags) do
+                  for _, client in ipairs(tag:clients()) do
+                    client.minimized = false
+                  end
+                end
+              end,
+              {description = "restored all minimized", group = "tag"}),
 
     -- Prompt
     awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
@@ -762,6 +779,8 @@ awful.rules.rules = {
         rule = { },
         properties = {
             border_width = beautiful.border_width,
+            screen = awful.screen.preferred,
+            placement = awful.placement.no_overlap+awful.placement.no_offscreen,
             size_hints_honor = false,
             border_color = beautiful.border_normal,
             focus = awful.client.focus.filter,
@@ -819,6 +838,9 @@ client.connect_signal("manage", function (c)
     -- Set the windows at the slave,
     -- i.e. put it at the end of others instead of setting it master.
     -- if not awesome.startup then awful.client.setslave(c) end
+
+    awful.client.movetoscreen(c, mouse.screen)
+    -- awful.client.movetoscreen(c, client.focus.screen)
 
     if awesome.startup and
       not c.size_hints.user_position
