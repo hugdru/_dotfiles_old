@@ -3,14 +3,14 @@
 #
 # <file system> <dir> <type>  <options> <dump>  <pass>
 # /dev/mapper/GnuLinuxVG-archLV LABEL=archFS
-UUID=360df23e-be43-4584-8d7b-e50978161398 /           ext4        rw,relatime,data=ordered  0 1
+UUID=360df23e-be43-4584-8d7b-e50978161398 /              ext4        rw,relatime,data=ordered  0 1
 
 # /dev/mapper/GnuLinuxVG-bootLV LABEL=bootFS
-UUID=14667b03-18df-4681-ba8b-fb02bfa44c79 /boot       ext4        rw,relatime,data=ordered  0 2
+UUID=14667b03-18df-4681-ba8b-fb02bfa44c79 /boot          ext4        rw,relatime,data=ordered  0 2
 
 # /dev/mapper/GnuLinuxVG-dataLV LABEL=dataFS
-# UUID=a2b57cb4-b523-4050-baaf-bb465f89a725 /home/hugdru/data ext4        rw,relatime,data=ordered  0 2
+UUID=a2b57cb4-b523-4050-baaf-bb465f89a725 /storage/data  ext4        rw,relatime,data=ordered  0 2
 
 # /dev/mapper/GnuLinuxVG-swapLV LABEL=swapFS
-UUID=f911a971-fde7-4907-92f1-f99d9eefec85 none        swap        defaults    0 0
+UUID=f911a971-fde7-4907-92f1-f99d9eefec85 none           swap        defaults    0 0
 

@@ -781,6 +781,7 @@ awful.rules.rules = {
             border_width = beautiful.border_width,
             screen = awful.screen.preferred,
             placement = awful.placement.no_overlap+awful.placement.no_offscreen,
+            -- placement = awful.placement.under_mouse+awful.placement.no_overlap+awful.placement.no_offscreen,
             size_hints_honor = false,
             border_color = beautiful.border_normal,
             focus = awful.client.focus.filter,

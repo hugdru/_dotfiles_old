@@ -68,8 +68,6 @@ doxygen
 dtools
 dub
 e2fsprogs
-eclipse-common
-eclipse-java
 elixir
 erlang-unixodbc
 eslint
@@ -209,6 +207,7 @@ mono-tools
 monodevelop
 mosquitto
 mp3gain
+mpd
 mpv
 mutt
 mythes-en

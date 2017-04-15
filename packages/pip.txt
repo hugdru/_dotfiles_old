@@ -5,11 +5,15 @@ beautifulsoup4
 borgbackup
 botocore
 cffi
+chardet
 click
 coursera-dl
 cryptography
 docker
 docker-compose
+docker-py
+dockerpty
+fig
 Flask
 greenlet
 grip
@@ -38,4 +42,5 @@ setuptools
 streamlink
 udiskie
 urllib3
+websocket-client
 Werkzeug

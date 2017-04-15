@@ -39,8 +39,8 @@
     <!-- pam_mount parameters: Volume-related -->
 
 
-<volume user="hugdru" fstype="ext4" path="/dev/GnuLinuxVG/dataLV" mountpoint="~/data" options="defaults,relatime" />
-<mkmountpoint enable="1" remove="true" />
+<!-- <volume user="hugdru" fstype="ext4" path="/dev/GnuLinuxVG/dataLV" mountpoint="~/data" options="defaults,relatime" /> -->
+<!-- <mkmountpoint enable="1" remove="true" /> -->
 
 
 </pam_mount>

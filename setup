@@ -63,7 +63,7 @@ save () (
     '/etc/NetworkManager/NetworkManager.conf'
   )
 
-  cp --parents -a "$sysFiles" "$sys_dir"
+  cp --parents -a "${sysFiles[@]}" "$sys_dir"
   chmod 644 "$sys_dir/etc/unbound/unbound.conf"
 )
 
@@ -73,7 +73,8 @@ install() (
     echo 'install files for user with username...'
     read user
     if [[ -z "$(getent passwd $user)" ]]; then
-      useradd -m -g "$user" -G wheel,uucp,rfkill,games,users,vboxusers,wireshark,hugdru,networkmanager -s /bin/zsh "$user"
+      groupadd "$user"
+      useradd -m -g "$user" -G wheel,uucp,rfkill,games,users,vboxusers,wireshark,"$user",networkmanager -s /bin/zsh "$user"
       home="/home/$user"
       mkdir -p "$home"
       chown -R "$user:$user $home"
@@ -93,11 +94,11 @@ install() (
   fi
 
   backups="$private_storage/borgBackups"
-  backup=$(borg list "$backups" | tail -n 1 | awk '{print $1}')
+  backup="$(borg list "$backups" | tail -n 1 | awk '{print $1}')"
   backup_home="home/$USER"
   data_to_extract=("$backup_home/.gnupg" "$backup_home/.weechat" "$backup_home/.config/tox")
   cd /
-  borg extract "$backups::$backup" "$data_to_extract"
+  borg extract "$backups::$backup" "${data_to_extract[@]}"
   ##########                       End of 2                        ##########
 
   ########## 3 - Configuration files ##########
@@ -180,10 +181,10 @@ setUpSymbolicLinks() (
     1>2 echo "$funcstack[1] expects a path to a directory"
   fi
 
-  echo 'Symbolic Links will override any existing files! You might lose your configuration files! Yy to continue'
+  echo 'Symbolic Links will override any existing files! You might lose your configuration files! YyY to continue'
   read response
 
-  if [[ "$response" != "Yy" ]]; then
+  if [[ "$response" != "YyY" ]]; then
     return
   fi
 

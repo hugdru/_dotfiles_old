@@ -25,7 +25,7 @@ uuidd:x:68:
 dbus:x:81:
 network:x:90:
 video:x:91:
-audio:x:92:
+audio:x:92:hugdru,mpd
 optical:x:93:
 floppy:x:94:
 storage:x:95:
@@ -67,3 +67,6 @@ vboxsf:x:109:
 redis:x:986:
 clamav:x:64:
 tox-bootstrapd:x:199:
+usbmux:x:140:
+mosquitto:x:994:
+mpd:x:45:
