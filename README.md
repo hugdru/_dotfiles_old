@@ -84,6 +84,7 @@ Check https://github.com/hugdru/dotfiles/blob/master/dotfiles/.config/user-dirs.
 
 ## Screenshots ##
 ![awesome1](https://github.com/hugdru/dotfiles/blob/master/screenshots/awesome1.png) <br>
+![alsi](https://github.com/hugdru/dotfiles/blob/master/screenshots/alsi.png) <br>
 ![awesome2](https://github.com/hugdru/dotfiles/blob/master/screenshots/awesome2.png) <br>
 ![awesome3](https://github.com/hugdru/dotfiles/blob/master/screenshots/awesome3.png) <br>
 ![awesome4](https://github.com/hugdru/dotfiles/blob/master/screenshots/awesome4.png) <br>
