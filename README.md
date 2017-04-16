@@ -83,17 +83,13 @@ I changed the default user-dirs environment variables because I keep all importa
 Check https://github.com/hugdru/dotfiles/blob/master/dotfiles/.config/user-dirs.dirs
 
 ## Screenshots ##
-![fzf-quick-cd](https://github.com/hugdru/dotfiles/blob/master/screenshots/fzf-quick-cd.png) <br>
-![fzf-quick-neovim](https://github.com/hugdru/dotfiles/blob/master/screenshots/fzf-quick-neovim.png) <br>
-![awesome5](https://github.com/hugdru/dotfiles/blob/master/screenshots/awesome5.png) <br>
-![awesome4](https://github.com/hugdru/dotfiles/blob/master/screenshots/awesome4.png) <br>
-![awesome3](https://github.com/hugdru/dotfiles/blob/master/screenshots/awesome3.png) <br>
+![awesome1](https://github.com/hugdru/dotfiles/blob/master/screenshots/awesome1.png) <br>
 ![awesome2](https://github.com/hugdru/dotfiles/blob/master/screenshots/awesome2.png) <br>
-![Awesome1](https://github.com/hugdru/dotfiles/blob/master/screenshots/awesome1.png) <br>
-![less](https://github.com/hugdru/dotfiles/blob/master/screenshots/less.png) <br>
+![awesome3](https://github.com/hugdru/dotfiles/blob/master/screenshots/awesome3.png) <br>
+![awesome4](https://github.com/hugdru/dotfiles/blob/master/screenshots/awesome4.png) <br>
 ![neovim](https://github.com/hugdru/dotfiles/blob/master/screenshots/neovim.png) <br>
 ![weechat](https://github.com/hugdru/dotfiles/blob/master/screenshots/weechat.png) <br>
-
-
-
-
+![fzf-quick-cd](https://github.com/hugdru/dotfiles/blob/master/screenshots/fzf-quick-cd.png) <br>
+![fzf-quick-neovim](https://github.com/hugdru/dotfiles/blob/master/screenshots/fzf-quick-neovim.png) <br>
+![less](https://github.com/hugdru/dotfiles/blob/master/screenshots/less.png) <br>
+![awesome5](https://github.com/hugdru/dotfiles/blob/master/screenshots/awesome5.png) <br>
