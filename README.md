@@ -83,6 +83,8 @@ I changed the default user-dirs environment variables because I keep all importa
 Check https://github.com/hugdru/dotfiles/blob/master/dotfiles/.config/user-dirs.dirs
 
 ## Screenshots ##
+![fzf-quick-cd](https://github.com/hugdru/dotfiles/blob/master/screenshots/fzf-quick-cd.png) <br>
+![fzf-quick-neovim](https://github.com/hugdru/dotfiles/blob/master/screenshots/fzf-quick-neovim.png) <br>
 ![awesome5](https://github.com/hugdru/dotfiles/blob/master/screenshots/awesome5.png) <br>
 ![awesome4](https://github.com/hugdru/dotfiles/blob/master/screenshots/awesome4.png) <br>
 ![awesome3](https://github.com/hugdru/dotfiles/blob/master/screenshots/awesome3.png) <br>
