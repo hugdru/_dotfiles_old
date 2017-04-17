@@ -356,7 +356,6 @@ vifm
 vim-spell-pt
 virt-manager
 virtualbox
-virtualbox-guest-dkms
 virtualbox-guest-iso
 vlc
 volumeicon
@@ -426,6 +425,7 @@ xscreensaver
 xsel
 xsp
 xterm
+yarn
 yasm
 zathura
 zathura-djvu

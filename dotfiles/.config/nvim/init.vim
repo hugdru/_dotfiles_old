@@ -4,7 +4,7 @@ let g:python_host_prog = '/usr/bin/python2'
 let g:python3_host_prog = '/usr/bin/python3'
 " }}}
 
-" Pluggins --------------------------- {{{
+" Plugins --------------------------- {{{
 call plug#begin('~/.config/nvim/plugged')
   " The ultimate snippet solution for Vim
   Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
