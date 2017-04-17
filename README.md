@@ -89,6 +89,8 @@ Check https://github.com/hugdru/dotfiles/blob/master/dotfiles/.config/user-dirs.
 ![awesome3](https://github.com/hugdru/dotfiles/blob/master/screenshots/awesome3.png) <br>
 ![awesome4](https://github.com/hugdru/dotfiles/blob/master/screenshots/awesome4.png) <br>
 ![neovim](https://github.com/hugdru/dotfiles/blob/master/screenshots/neovim.png) <br>
+![neovimrc](https://github.com/hugdru/dotfiles/blob/master/screenshots/neovimrc.png) <br>
+![zplug](https://github.com/hugdru/dotfiles/blob/master/screenshots/zplug.png) <br>
 ![weechat](https://github.com/hugdru/dotfiles/blob/master/screenshots/weechat.png) <br>
 ![fzf-quick-cd](https://github.com/hugdru/dotfiles/blob/master/screenshots/fzf-quick-cd.png) <br>
 ![fzf-quick-neovim](https://github.com/hugdru/dotfiles/blob/master/screenshots/fzf-quick-neovim.png) <br>
