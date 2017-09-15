@@ -53,4 +53,4 @@ if [[ -f "$nix_init_script" ]]; then
   source "$nix_init_script"
 fi
 
-xrandr --setprovideroffloadsink radeon Intel
+xrandr --setprovideroffloadsink 0x41 0x68

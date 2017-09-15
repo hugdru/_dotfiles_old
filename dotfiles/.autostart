@@ -7,8 +7,8 @@ compton --xrender-sync-fence --xrender-sync --backend glx --vsync opengl-swc -b
 volumeicon &
 cbatticon &
 chromium & #Chromium,web,class
-slack &
+#slack &
 thunderbird &
-qtox &
-artha &
+#qtox &
+#artha &
 zim &

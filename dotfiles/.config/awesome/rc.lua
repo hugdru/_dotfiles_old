@@ -203,8 +203,8 @@ programs = {
       isRunOrRaise = true
   },
   keepassx = {
-      name = "keepassx2",
-      windowProperties = { class = {"Keepassx2"}, instance = {"keepassx2"} },
+      name = "keepassxc",
+      windowProperties = { class = {"Keepassxc"}, instance = {"keepassxc"} },
       ruleType = "rule_any",
       rulesProperties = { tag = "misc", switchtotag = true },
       keybinding = { extraModKey = "Shift", key = "w" },

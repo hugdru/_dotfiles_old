@@ -5,4 +5,5 @@ htmlhint
 jsonlint
 markdown-pdf
 node-sass
+npm
 stylelint

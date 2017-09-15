@@ -8,9 +8,7 @@ hyphen-pt_pt
 icu52
 libtinfo
 mythes-pt_pt
-oracle-sqldeveloper
 pacaur
-papi
 pdftk-bin
 plantuml
 slack-desktop
